@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Untagged on cmnemoi | Software &amp; ML Engineering</title>
+    <link>http://localhost:1313/tags/untagged/</link>
+    <description>Recent content in Untagged on cmnemoi | Software &amp; ML Engineering</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jun 2025 23:16:41 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Fri, 06 Jun 2025 23:16:41 +0200</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>&lt;h1 id=&#34;my-first-post&#34;&gt;My First Post&lt;/h1&gt;&#xA;&lt;p&gt;This is my first post.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

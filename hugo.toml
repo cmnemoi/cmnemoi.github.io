@@ -1,0 +1,9 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'en-us'
+title = 'cmnemoi | Software & ML Engineering'
+theme = 'hello-friend-ng'
+
+[[menu.main]]
+    identifier = "blog"
+    name       = "Blog"
+    url        = "/posts"
