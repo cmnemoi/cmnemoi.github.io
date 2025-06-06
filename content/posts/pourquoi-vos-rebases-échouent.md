@@ -1,5 +1,5 @@
 ---
-title: "Pourquoi vos rebases échouent (et comment les réussir systématiquement) ?"
+title: "Pourquoi vos rebases échouent (et comment les réussir) ?"
 date: 2025-06-06T23:16:41+02:00
 toc: false
 images:
@@ -13,7 +13,6 @@ C’est sans doute l’une des commandes les plus puissantes de Git — mais aus
 Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.  
 Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.
 
-Je le sais d’expérience.  
 Lorsque j’ai commencé à maintenir [**eMush**](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.
 
 C’est en rebasant **interactivement une branche avec plus de 200 commits** que j’ai vraiment appris à le maîtriser.  
@@ -106,9 +105,11 @@ Pourquoi cette séquence ?
 ## Pourquoi cette rigueur est essentielle en open source
 
 Sur un projet personnel, un rebase mal exécuté n’a souvent qu’un impact local.
-Sur un projet open source ou propriétaire, c’est une autre histoire.
+
+Sur un projet open source ou d'entreprise, c’est une autre histoire.
 
 Un mauvais rebase peut bloquer des pull requests, compliquer la relecture de code, ou perturber le travail des autres contributeurs.
+
 Maintenir un historique clair est un **signe de professionnalisme**, et un véritable atout pour toute l’équipe.
 
 ---
