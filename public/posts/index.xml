@@ -9,23 +9,21 @@
         <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Pourquoi vos rebases échouent (et comment les réussir systématiquement) ?</title>
-            <link>http://localhost:1313/posts/why-you-fail-rebasing/</link>
+            <title>Pourquoi vos rebases échouent (et comment les réussir) ?</title>
+            <link>http://localhost:1313/posts/pourquoi-vos-rebases-%C3%A9chouent/</link>
             <pubDate>Fri, 06 Jun 2025 23:16:41 +0200</pubDate>
             
-            <guid>http://localhost:1313/posts/why-you-fail-rebasing/</guid>
+            <guid>http://localhost:1313/posts/pourquoi-vos-rebases-%C3%A9chouent/</guid>
             <description>&lt;p&gt;Le rebase.&lt;br&gt;
 C’est sans doute l’une des commandes les plus puissantes de Git — mais aussi l’une des plus faciles à rater.&lt;/p&gt;
 &lt;p&gt;Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.&lt;br&gt;
 Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.&lt;/p&gt;
-&lt;p&gt;Je le sais d’expérience.&lt;br&gt;
-Lorsque j’ai commencé à maintenir &lt;a href=&#34;https://gitlab.com/eternaltwin/mush/mush&#34;&gt;&lt;strong&gt;eMush&lt;/strong&gt;&lt;/a&gt;, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.&lt;/p&gt;</description>
+&lt;p&gt;Lorsque j’ai commencé à maintenir &lt;a href=&#34;https://gitlab.com/eternaltwin/mush/mush&#34;&gt;&lt;strong&gt;eMush&lt;/strong&gt;&lt;/a&gt;, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>Le rebase.<br>
 C’est sans doute l’une des commandes les plus puissantes de Git — mais aussi l’une des plus faciles à rater.</p>
 <p>Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.<br>
 Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.</p>
-<p>Je le sais d’expérience.<br>
-Lorsque j’ai commencé à maintenir <a href="https://gitlab.com/eternaltwin/mush/mush"><strong>eMush</strong></a>, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.</p>
+<p>Lorsque j’ai commencé à maintenir <a href="https://gitlab.com/eternaltwin/mush/mush"><strong>eMush</strong></a>, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.</p>
 <p>C’est en rebasant <strong>interactivement une branche avec plus de 200 commits</strong> que j’ai vraiment appris à le maîtriser.<br>
 Depuis, j’ai reviewé <strong>des centaines de pull requests</strong> sur eMush — et j’ai vu revenir, encore et encore, les mêmes erreurs de rebase.</p>
 <p>Le plus étonnant ?<br>
@@ -78,10 +76,10 @@ Or ces interfaces graphiques gèrent mal les pushs forcés nécessaires après u
 </ul>
 <hr>
 <h2 id="pourquoi-cette-rigueur-est-essentielle-en-open-source">Pourquoi cette rigueur est essentielle en open source</h2>
-<p>Sur un projet personnel, un rebase mal exécuté n’a souvent qu’un impact local.
-Sur un projet open source ou propriétaire, c’est une autre histoire.</p>
-<p>Un mauvais rebase peut bloquer des pull requests, compliquer la relecture de code, ou perturber le travail des autres contributeurs.
-Maintenir un historique clair est un <strong>signe de professionnalisme</strong>, et un véritable atout pour toute l’équipe.</p>
+<p>Sur un projet personnel, un rebase mal exécuté n’a souvent qu’un impact local.</p>
+<p>Sur un projet open source ou d&rsquo;entreprise, c’est une autre histoire.</p>
+<p>Un mauvais rebase peut bloquer des pull requests, compliquer la relecture de code, ou perturber le travail des autres contributeurs.</p>
+<p>Maintenir un historique clair est un <strong>signe de professionnalisme</strong>, et un véritable atout pour toute l’équipe.</p>
 <hr>
 <h2 id="en-résumé">En résumé</h2>
 <p><strong>Trois pièges fréquents :</strong></p>

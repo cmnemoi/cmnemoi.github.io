@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 06 Jun 2025 23:16:41 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Pourquoi vos rebases échouent (et comment les réussir systématiquement) ?</title>
-      <link>http://localhost:1313/posts/why-you-fail-rebasing/</link>
+      <title>Pourquoi vos rebases échouent (et comment les réussir) ?</title>
+      <link>http://localhost:1313/posts/pourquoi-vos-rebases-%C3%A9chouent/</link>
       <pubDate>Fri, 06 Jun 2025 23:16:41 +0200</pubDate>
-      <guid>http://localhost:1313/posts/why-you-fail-rebasing/</guid>
-      <description>&lt;p&gt;Le rebase.&lt;br&gt;&#xA;C’est sans doute l’une des commandes les plus puissantes de Git — mais aussi l’une des plus faciles à rater.&lt;/p&gt;&#xA;&lt;p&gt;Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.&lt;br&gt;&#xA;Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.&lt;/p&gt;&#xA;&lt;p&gt;Je le sais d’expérience.&lt;br&gt;&#xA;Lorsque j’ai commencé à maintenir &lt;a href=&#34;https://gitlab.com/eternaltwin/mush/mush&#34;&gt;&lt;strong&gt;eMush&lt;/strong&gt;&lt;/a&gt;, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/pourquoi-vos-rebases-%C3%A9chouent/</guid>
+      <description>&lt;p&gt;Le rebase.&lt;br&gt;&#xA;C’est sans doute l’une des commandes les plus puissantes de Git — mais aussi l’une des plus faciles à rater.&lt;/p&gt;&#xA;&lt;p&gt;Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.&lt;br&gt;&#xA;Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.&lt;/p&gt;&#xA;&lt;p&gt;Lorsque j’ai commencé à maintenir &lt;a href=&#34;https://gitlab.com/eternaltwin/mush/mush&#34;&gt;&lt;strong&gt;eMush&lt;/strong&gt;&lt;/a&gt;, un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
