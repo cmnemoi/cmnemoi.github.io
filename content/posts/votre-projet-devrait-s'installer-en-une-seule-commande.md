@@ -1,9 +1,7 @@
 ---
 title: "Votre projet devrait s’installer en une seule commande"
 date: 2025-10-18T14:58:46+02:00
-draft: true
 toc: false
-images:
 tags:
   - devops
   - software-engineering
