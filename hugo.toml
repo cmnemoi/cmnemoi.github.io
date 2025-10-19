@@ -18,3 +18,7 @@ theme = 'hello-friend-ng'
     identifier = "blog"
     name       = "Blog"
     url        = "/posts"
+
+[services]
+  [services.disqus]
+    shortname = 'disqus'
