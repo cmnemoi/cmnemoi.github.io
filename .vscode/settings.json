@@ -1,0 +1,20 @@
+{
+    "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "shell",
+          "commands": ["devbox shell", "clear"]
+        },
+      ],
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "watch",
+          "commands": ["devbox shell", "clear", "hugo server"]
+        },
+      ],
+    }
+  ]
+}
