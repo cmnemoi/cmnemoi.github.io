@@ -8,18 +8,6 @@ draft: false
 
 *Également disponibles sur mon [profil LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/)*
 
-> **[Anthony Cyrille](https://fr.linkedin.com/in/anthony-cyrille)** — *CTO & Formateur | +2000 devs seniors formés en 2 ans | 13 ans d'exp | DDD, Tests Unitaires, Clean Code*
->
-> J'ai eu l'occasion de former Charles à plusieurs pratiques avancées en matière d'ingénierie logicielle telles que la Clean Architecture et le Test-Driven Development.  
->
-> Je l'ai vu progresser en profondeur sur ces sujets et appliquer ces principes avec sérieux dans ses projets. Son approche est structurée, pragmatique et orientée qualité.  
->
-> Il pose de bonnes questions, challenge les choix techniques avec bienveillance et pédagogie, et s'investit réellement pour monter en compétence.  
->
-> Je le recommande sans hésitation pour des missions de développement Python où la rigueur et la qualité logicielle sont essentielles.
-
----
-
 > **[Guillaume Astor](https://fr.linkedin.com/in/guillaumeastor)** — *Data Engineering Manager chez SFEIR | Google Cloud Certified*
 >
 > J'ai eu le plaisir de travailler avec Charles chez Servier pendant 1 an, en particulier sur le projet Knowledge Bot. 
@@ -39,6 +27,29 @@ draft: false
 > Charles a su travailler efficacement avec les métiers, clarifier les indicateurs critiques et rendre les analyses accessibles aux équipes internationales. 
 >
 > Je recommande vivement Charles pour toute mission en développement Python ou Data.
+
+---
+
+> **[Jérémy Guilbert](https://www.linkedin.com/in/jrmyguilbert)** — *Quality Assessment Engineer chez Stormshield*
+>
+> J’ai pu collaborer avec Charles sur le projet open source Eternaltwin depuis plusieurs années maintenant, au sein d'une association qui maintient 12 applications web. 
+>
+> Il a toujours été très impliqué, présent sur tous les sujets et force de proposition. 
+> Il est constant, fiable et n’hésite pas à plonger dans n’importe quelle partie du code ou de l’infrastructure quand il faut débloquer un sujet, même hors de son périmètre. 
+>
+>Je le recommande sans hésiter pour toute mission en développement Python ou ingénierie logicielle.
+
+---
+
+> **[Anthony Cyrille](https://fr.linkedin.com/in/anthony-cyrille)** — *CTO & Formateur | +2000 devs seniors formés en 2 ans | 13 ans d'exp | DDD, Tests Unitaires, Clean Code*
+>
+> J'ai eu l'occasion de former Charles à plusieurs pratiques avancées en matière d'ingénierie logicielle telles que la Clean Architecture et le Test-Driven Development.  
+>
+> Je l'ai vu progresser en profondeur sur ces sujets et appliquer ces principes avec sérieux dans ses projets. Son approche est structurée, pragmatique et orientée qualité.  
+>
+> Il pose de bonnes questions, challenge les choix techniques avec bienveillance et pédagogie, et s'investit réellement pour monter en compétence.  
+>
+> Je le recommande sans hésitation pour des missions de développement Python où la rigueur et la qualité logicielle sont essentielles.
 
 ---
 
