@@ -7,12 +7,17 @@ theme = 'hello-friend-ng'
   # Ajoutez vos autres paramètres ici si nécessaire
 
 [[params.social]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/"
+
+[[params.social]]
   name = "github"
   url = "https://github.com/cmnemoi"
 
-[[params.social]]
-  name = "linkedin"
-  url = "https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/"
+[[menu.main]]
+    identifier = "testimonies"
+    name       = "Témoignages"
+    url        = "/testimonies"
 
 [[menu.main]]
     identifier = "blog"
