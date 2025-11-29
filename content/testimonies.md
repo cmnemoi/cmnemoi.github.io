@@ -6,7 +6,7 @@ draft: false
 
 ## Recommandations
 
-*Également disponibles sur mon [profil LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/)*
+*Également disponibles sur mon [profil LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/details/recommendations/)*
 
 > **[Guillaume Astor](https://fr.linkedin.com/in/guillaumeastor)** — *Data Engineering Manager chez SFEIR | Google Cloud Certified*
 >
