@@ -93,7 +93,7 @@ draft: false
 
 > **Contributrice eMush**
 >
-> Tu es le meilleur développeur que j'aie pu croiser.
+> Je tiens à te dire que tu es le meilleur développeur que j'aie pu croiser.
 
 ---
 
