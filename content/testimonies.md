@@ -41,7 +41,17 @@ draft: false
 
 ---
 
-> **[Anthony Cyrille](https://fr.linkedin.com/in/anthony-cyrille)** — *CTO & Formateur | +2000 devs seniors formés en 2 ans | 13 ans d'exp | DDD, Tests Unitaires, Clean Code*
+> **[Robin Deparpe](https://www.linkedin.com/in/robin-deparpe)** — *Analyste d'affaires | Consultant fonctionnel chez Devoteam*
+>
+> J'ai eu l'occasion de collaborer avec Charles pendant 2 ans, au sein de l'association Eternaltwin. Durant cette période, j'ai pu observer son travail dans le développement et la maintenance de l'une des applications les plus fréquentées de l'association.
+>
+> Ce qui m'a le plus marqué, c'est sa capacité à accompagner les développeurs, qu'ils soient débutants ou expérimentés, tout en gardant une vision technique et fonctionnelle claire. Il a indéniablement su faire avancer le projet dans la bonne direction en collaboration avec les utilisateurs.
+>
+> Charles est quelqu'un de fiable, rigoureux, et capable de gérer des projets techniques ambitieux sur le long terme. Je le recommande sans hésiter pour toute mission de développement Python.
+
+---
+
+> **[Anthony Cyrille](https://fr.linkedin.com/in/anthony-cyrille)** — *CTO chez eSwift & Formateur chez Ancyr Academy | +2000 devs seniors formés en 2 ans | 13 ans d'exp | DDD, Tests Unitaires, Clean Code*
 >
 > J'ai eu l'occasion de former Charles à plusieurs pratiques avancées en matière d'ingénierie logicielle telles que la Clean Architecture et le Test-Driven Development.  
 >
