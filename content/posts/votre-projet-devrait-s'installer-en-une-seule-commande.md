@@ -8,185 +8,68 @@ tags:
   - open-source
 ---
 
-Faciliter l’installation d’un projet est souvent perçu comme un détail.
-En réalité, c’est un levier essentiel pour améliorer la qualité globale de vos développements.
+Nous automatisons nos tests, nos déploiements et notre intégration continue. Sur bien des projets, l'installation locale reste pourtant une liste d'instructions à suivre à la main, et c'est souvent la première chose qu'un nouveau collègue rencontre. Chaque étape de cette liste est une occasion de se tromper.
 
-Lorsqu’un nouveau collègue tente de lancer votre projet pour la première fois, chaque étape supplémentaire est une opportunité de friction.
+Lorsque j'ai rejoint [eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, l'installation était un véritable frein. Elle s'est améliorée par itérations, et chacune a montré un peu mieux où se logeait le problème.
 
-Réduire cette friction n’est pas un luxe.
-C’est un signe de professionnalisme — et un facteur clé de productivité.
+## Tout installer à la main
 
----
+Au départ, tout s'installait et se configurait à la main, avec une documentation partielle.
 
-## Le paradoxe du développeur
+Pour PHP :
 
-Notre métier consiste précisément à automatiser des traitements.
-Pourtant, combien de projets affichent encore des instructions d’installation longues et manuelles ?
+- installer PHP et les bonnes extensions (`pdo_pgsql`, `intl`, `mbstring`, etc.) ;
+- configurer le `php.ini` (timezone, `memory_limit`, etc.) et ajouter PHP au `PATH` ;
+- installer Composer, puis résoudre les dépendances du projet.
 
-Nous passons des heures à optimiser nos architectures, à rendre notre produit final le plus fluide possible pour l’utilisateur…
-Mais nous oublions parfois que nos premiers utilisateurs sont aussi nos collègues, ou même nous-mêmes lors d’un changement de poste de travail.
+Pour Node.js :
 
-Le soin que nous mettons à concevoir notre produit doit également s’appliquer à l’expérience développeur.
+- installer Node.js, NPM et Yarn ;
+- installer le front-end ;
+- installer et configurer un serveur d'authentification séparé.
 
----
+Pour PostgreSQL :
 
-## Une problématique rencontrée sur le terrain
+- installer PostgreSQL et créer les utilisateurs ;
+- créer deux bases de données, l'une pour le développement, l'autre pour les tests ;
+- configurer les permissions, et adapter si besoin le `pg_hba.conf` pour autoriser les connexions.
 
-Lorsque j’ai rejoint le projet [eMush](https://gitlab.com/eternaltwin/mush/mush/), un jeu open source que je développe depuis 3 ans, l’installation était un véritable frein.
+Chaque contributeur refaisait ces étapes sur sa machine, avec sa plateforme et ses versions. Les erreurs qui en résultaient étaient subtiles : un écart de configuration, une version de dépendance incompatible. Le temps passait à déboguer l'environnement plutôt que le code, et chaque arrivée était lente et fragile.
 
-Comme souvent sur un projet vivant, les solutions se sont construites par itérations.
-Voici le chemin que nous avons parcouru — avec, à chaque étape, des enseignements qui je l'espère sont applicables à d’autres contextes.
+Chaque étape faite à la main est un endroit où deux machines peuvent diverger. C'est cette divergence que les phases suivantes ont essayé de réduire.
 
----
+## Docker
 
-## Phase 1 — L’installation manuelle
+Pour homogénéiser l'environnement, nous avons introduit Docker. PHP, Node.js et PostgreSQL tournent alors dans les mêmes conteneurs pour tout le monde, et beaucoup de différences entre machines disparaissent.
 
-Initialement, tout devait être installé et configuré à la main, avec une documentation partielle.
+La divergence s'est pourtant déplacée vers l'installation de Docker elle-même, qui n'avait rien de trivial, en particulier sous Windows (WSL2, différences de versions, problèmes de permissions…). Un nouveau contributeur pouvait encore rester bloqué dès les premières commandes.
 
-Concrètement :
+## Documenter
 
-**👉 PHP :**
+Nous avons donc renforcé la documentation : prérequis précis, vérifications de l'environnement, astuces propres à chaque plateforme. Le processus est devenu plus fiable.
 
-* installation de PHP lui-même
-* installation des bonnes extensions (`pdo_pgsql`, `intl`, `mbstring`, etc.)
-* configuration du `php.ini` (timezone, `memory_limit`, etc.)
-* ajout de PHP au `PATH` du système
-* installation de Composer
-* résolution des dépendances PHP avec Composer
+Il restait toutefois une checklist relativement longue, faite de commandes successives. La documentation rendait chaque étape plus sûre sans en retirer aucune, et c'était toujours le nouvel arrivant qui les exécutait.
 
-**👉 Node.js :**
+## Une seule commande
 
-* installation de Node.js et NPM
-* installation de Yarn
-* installation du front-end
-* installation et configuration d’un serveur d’authentification séparé
-
-**👉 PostgreSQL :**
-
-* installation de PostgreSQL
-* création des utilisateurs
-* création de deux bases de données (développement + tests)
-* configuration des permissions nécessaires
-* adaptation éventuelle du fichier `pg_hba.conf` pour autoriser les connexions
-
-Chaque contributeur devait réaliser manuellement ces étapes — avec des risques d’oublis ou de divergences en fonction des plateformes et des versions.
-
-Résultat :
-
-* des erreurs subtiles liées aux différences de configuration
-* des incompatibilités entre versions de dépendances
-* du temps perdu à déboguer l’environnement plutôt que le code
-* un onboarding lent et fragile pour chaque nouveau contributeur
-
----
-
-## Phase 2 — Introduction de Docker
-
-Pour homogénéiser l’environnement, nous avons introduit Docker.
-
-Cela a permis d’éliminer de nombreuses différences entre les machines.
-
-Mais l’installation de Docker elle-même n’était pas triviale, en particulier sur Windows (WSL2, différences de versions, problèmes de permissions...).
-Les nouveaux contributeurs pouvaient encore rencontrer des blocages dès les premières étapes.
-
----
-
-## Phase 3 — Documentation détaillée
-
-Nous avons donc renforcé la documentation :
-
-* prérequis précis
-* vérification des environnements
-* astuces spécifiques selon les plateformes
-
-Le processus est devenu plus fiable, mais restait encore composé de plusieurs commandes successives.
-À ce stade, chaque nouvel arrivant devait suivre une checklist relativement longue.
-
----
-
-## Phase 4 — Vers l’automatisation complète
-
-L’étape suivante était logique : pourquoi ne pas automatiser l’ensemble du processus ?
-
-Nous avons conçu un script d’installation complet :
+L'étape suivante consistait à confier ces commandes à un script. Sur Ubuntu, l'installation d'eMush tient aujourd'hui en une ligne :
 
 ```bash
-curl -sSL https://gitlab.com/eternaltwin/mush/mush/-/raw/develop/clone_and_docker_install.sh?ref_type=heads | bash
+curl -sSL https://gitlab.com/eternaltwin/mush/mush/-/raw/main/clone_and_docker_install.sh?ref_type=heads | bash
 ```
 
-Ce script :
+Ce script vérifie que `git` et `curl` sont présents, clone le dépôt, puis lance `docker_install.sh`. Ce second script installe Docker, prépare les variables d'environnement, construit les images, installe le back-end, le front-end et le serveur d'authentification, puis initialise les bases de données.
 
-* clone le repository
-* vérifie les prérequis
-* configure Docker
-* initialise la base de données
-* construit les assets
-* lance l’application
+La difficulté de la phase Docker a donc disparu : installer Docker n'est plus un prérequis, c'est une étape du script. Un nouvel arrivant dispose d'un environnement fonctionnel en quelques minutes.
 
-Aujourd’hui, un nouvel arrivant peut disposer d’un environnement fonctionnel en quelques minutes, avec une seule commande.
+Cette automatisation n'est pas universelle. Le script fonctionne sur Ubuntu, y compris via WSL2 sous Windows, et un script PowerShell existe pour Windows natif. D'autres distributions restent à couvrir. Même partielle, elle a déjà réduit le temps d'installation, rendu les environnements plus cohérents et simplifié l'aide apportée aux nouveaux contributeurs.
 
----
+## Et sans Docker ?
 
-## Une approche pragmatique
+Docker n'est pas obligatoire. Il a été utile sur eMush parce que plusieurs technologies y cohabitent. Sur une stack homogène, par exemple entièrement en JavaScript, des scripts natifs peuvent suffire.
 
-Bien entendu, cette solution n’est pas encore universelle.
+Je viserais donc, par défaut, une installation en une seule commande : chaque étape laissée au lecteur d'une documentation est une étape où sa machine peut diverger de la vôtre. L'outil dépend de la stack, Docker quand plusieurs technologies cohabitent, un script natif sinon. Et tant que le script ne couvre pas toutes les plateformes, la documentation reste nécessaire pour les autres.
 
-* Le script “one-line install” fonctionne aujourd’hui sur Ubuntu (y compris via WSL2 sur Windows).
-* Un script PowerShell est disponible pour Windows natif.
-* Nous travaillons à élargir le support multi-distributions.
+## Références
 
-Même partiellement déployée, cette automatisation a déjà permis de :
-
-* réduire le temps moyen d’installation,
-* améliorer la cohérence des environnements,
-* simplifier le support aux nouveaux contributeurs.
-
----
-
-## Pourquoi viser une installation en une commande ?
-
-Trois bénéfices majeurs :
-
-**1️⃣ Réduction de la friction**
-Faciliter l’arrivée des nouveaux contributeurs ou développeurs.
-
-**2️⃣ Standardisation des environnements**
-Minimiser les écarts entre postes de développement.
-
-**3️⃣ Cohérence avec nos pratiques professionnelles**
-Nous automatisons nos tests, nos déploiements, nos intégrations continues.
-L’installation locale mérite la même rigueur.
-
----
-
-## Docker est-il obligatoire ?
-
-Non. Docker est un outil parmi d’autres.
-
-* Si votre stack est homogène (ex. 100% JavaScript), des scripts CLI natifs peuvent suffire.
-* Si plusieurs technologies coexistent, Docker apporte un réel bénéfice en termes de standardisation.
-
-Quelle que soit la solution technique, l’objectif reste le même :
-**proposer une installation simple, fiable et reproductible.**
-
----
-
-## En résumé
-
-Votre projet mérite une expérience d’installation à la hauteur de sa qualité technique.
-
-Qu’il soit open source ou logiciel d’entreprise, viser une installation en une commande :
-
-* facilite la prise en main,
-* renforce la collaboration,
-* et valorise le travail des équipes.
-
-C’est un investissement modeste, aux bénéfices durables.
-
----
-
-## Pour aller plus loin
-
-Si vous souhaitez bénéficier de mon expertise sur ces sujets, l’ingénierie logicielle, en machine learning ou en IA générative, n’hésitez pas à me contacter.
-
-Je me ferai un plaisir d’échanger avec vous sur ces sujets — et de vous aider à renforcer vos pratiques.
+- eMush, *README*, GitLab. https://gitlab.com/eternaltwin/mush/mush

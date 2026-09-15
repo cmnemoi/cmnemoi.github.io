@@ -1,5 +1,5 @@
 ---
-title: "Pourquoi vos rebases échouent (et comment les réussir) ?"
+title: "Trois façons de rater un rebase (et la séquence que j'utilise)"
 date: 2025-06-06T23:16:41+02:00
 toc: false
 images:
@@ -7,84 +7,25 @@ tags:
   - git
 ---
 
-Le rebase.  
-C’est sans doute l’une des commandes les plus puissantes de Git — mais aussi l’une des plus faciles à rater.
+Un [rebase](https://git-scm.com/docs/git-rebase) rejoue les commits d'une branche par-dessus une autre, pour intégrer ses nouveautés sans commit de fusion. Les trois erreurs qui suivent concernent tout projet où les branches de fonctionnalité sont rebasées sur une branche principale : `develop` ici, souvent `main` ailleurs.
 
-Bien maîtrisé, il permet de garder un historique net, lisible, et de faciliter le travail de toute l’équipe.  
-Mal maîtrisé, il peut semer des conflits, bloquer une pull request, ou même rendre une branche inutilisable.
+J'ai d'abord rédigé ces conseils pour les contributeurs d'[eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source, avant de les compléter en juin 2025.
 
-Lorsque j’ai commencé à maintenir [**eMush**](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, je n’imaginais pas à quel point le rebase pouvait devenir un art délicat.
+Prenons une branche `ma-branche`, créée à partir de `develop`. Pendant que nous travaillons dessus, d'autres merge requests sont fusionnées dans `develop`, et nous voulons les intégrer avant la relecture.
 
-C’est en rebasant **interactivement une branche avec plus de 200 commits** que j’ai vraiment appris à le maîtriser.  
-Depuis, j’ai reviewé **des centaines de pull requests** sur eMush — et j’ai vu revenir, encore et encore, les mêmes erreurs de rebase.
+## Rebaser la bonne branche
 
-Le plus étonnant ?  
-Le piège le plus courant n’est pas celui qu’on croit.
+`git rebase develop` rejoue les commits de la branche *courante* par-dessus `develop`. La commande doit donc être lancée depuis `ma-branche`. Lancée depuis `develop`, elle n'a aucun effet utile.
 
-Mais d’abord, voyons pourquoi tant de rebases tournent mal.
+## Rebaser sur une version à jour de `develop`
 
----
+Il est très possible que la copie locale de `develop` ne corresponde plus à celle du serveur. Il est plus sûr de rebaser sur `origin/develop`, une *branche de suivi distante* (*remote-tracking branch*) : la copie de l'état du serveur que le dernier `git fetch` a récupérée.
 
-## Pourquoi tant de rebases échouent ?
+## Pousser depuis un terminal
 
-Rebaser une branche semble trivial : *« je mets ma branche à jour, je pousse, et c’est réglé. »*  
-En pratique, trois écueils guettent tout développeur un peu pressé — ou mal outillé.
+J'ai ajouté ce point en juin 2025. Lorsque l'on pousse une branche rebasée avec le bouton d'un IDE (VSCode, PHPStorm…), je ne saurais pas expliquer précisément ce qu'il se passe. Je constate seulement que cela ne fonctionne pas : l'historique devient chaotique. Il faut donc impérativement pousser depuis un terminal.
 
----
-
-### 1️⃣ Rebaser sur la mauvaise branche
-
-Le réflexe est vite pris.  
-On est sur `develop`, on tape machinalement :
-
-```bash
-git rebase develop
-````
-
-Problème : on vient de rebaser `develop` sur lui-même.
-Aucun effet — ou pire, un historique bancal si le `develop` local n’était pas à jour.
-
-👉 **Solution** : toujours se positionner sur sa branche de feature avant de lancer le rebase.
-
----
-
-### 2️⃣ Rebaser sur un `develop` obsolète
-
-C’est le piège le plus insidieux.
-
-Vous êtes sur votre branche, vous tapez :
-
-```bash
-git rebase develop
-```
-
-Mais quand avez-vous mis à jour votre `develop` ?
-Si vous ne l’avez pas synchronisé récemment, vous risquez de rebaser sur une version périmée.
-Résultat : des conflits imprévus, un historique incohérent.
-
-👉 **Solution** : rebaser directement sur `origin/develop`, pour s’assurer de travailler sur la version la plus récente.
-
----
-
-### 3️⃣ Pousser via une interface graphique
-
-Et voici, sans doute, **le piège le plus courant et le plus surprenant** — celui que j’ai mis le plus longtemps à identifier.
-
-Personnellement, j’ai toujours effectué mes pushs en ligne de commande, sans problème.
-Mais pendant **près de trois ans**, je voyais régulièrement des contributeurs expérimentés produire des historiques incohérents après un rebase.
-Je ne comprenais pas pourquoi.
-
-La cause ?
-Beaucoup utilisaient le bouton *« Push »* de leur IDE après un rebase (VSCode, PHPStorm, etc).
-Or ces interfaces graphiques gèrent mal les pushs forcés nécessaires après un rebase — elles peuvent produire un push partiel, ou recréer des commits en double.
-
-👉 Depuis que j’ai compris ce point, je le souligne systématiquement : **après un rebase, le push doit impérativement se faire en ligne de commande.**
-
----
-
-## La méthode inratable
-
-Voici le rituel que j’applique désormais sur tous mes projets — et que je recommande à tous les contributeurs d’eMush :
+## La séquence que j'utilise
 
 ```bash
 git fetch
@@ -93,50 +34,11 @@ git rebase origin/develop
 git push --force-if-includes --force-with-lease
 ```
 
-Pourquoi cette séquence ?
+D'après la [documentation de `git push`](https://git-scm.com/docs/git-push), `--force-with-lease` refuse la mise à jour si quelqu'un a poussé sur la branche distante depuis notre dernier `fetch`, et `--force-if-includes` exige en plus que l'état distant ait été intégré localement. Avec cette séquence, je n'ai jamais rencontré de problème.
 
-* `git fetch` : synchronise les branches locales avec le serveur.
-* `git checkout ma-branche` : se positionner sur la branche cible.
-* `git rebase origin/develop` : rebaser sur la version la plus récente de `develop`.
-* `git push --force-if-includes --force-with-lease` : pousser de manière sécurisée, sans risquer d’écraser le travail des autres.
+Lorsqu'une branche contient beaucoup de commits, il m'est arrivé de les regrouper d'abord en un seul avec un rebase interactif (`git rebase -i`), pour avoir moins de conflits à résoudre.
 
----
+## Références
 
-## Pourquoi cette rigueur est essentielle en open source
-
-Sur un projet personnel, un rebase mal exécuté n’a souvent qu’un impact local.
-
-Sur un projet open source ou d'entreprise, c’est une autre histoire.
-
-Un mauvais rebase peut bloquer des pull requests, compliquer la relecture de code, ou perturber le travail des autres contributeurs.
-
-Maintenir un historique clair est un **signe de professionnalisme**, et un véritable atout pour toute l’équipe.
-
----
-
-## En résumé
-
-**Trois pièges fréquents :**
-
-1️⃣ Rebaser sur la mauvaise branche
-
-2️⃣ Rebaser sur un `develop` obsolète
-
-3️⃣ Pousser via une interface graphique
-
-**Une méthode fiable :**
-
-```bash
-git fetch
-git checkout ma-branche
-git rebase origin/develop
-git push --force-if-includes --force-with-lease
-```
-
----
-
-## Envie d’aller plus loin ?
-
-Si vous souhaitez bénéficier de mon expertise sur Git, l’ingénierie logicielle, le ML engineering ou l’IA générative, n’hésitez pas à me contacter.
-
-Je me ferai un plaisir d’échanger avec vous sur ces sujets — et de vous aider à renforcer vos pratiques.
+- *git-rebase*, documentation officielle de Git. https://git-scm.com/docs/git-rebase
+- *git-push*, documentation officielle de Git. https://git-scm.com/docs/git-push
