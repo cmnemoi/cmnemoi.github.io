@@ -1,6 +1,7 @@
 ---
 title: "Votre projet devrait s’installer en une seule commande"
 date: 2025-10-18T14:58:46+02:00
+description: "Comment l'installation d'eMush est passée de trois technologies configurées à la main à une seule commande, et ce que Docker n'a pas réglé."
 toc: false
 tags:
   - devops
@@ -8,9 +9,9 @@ tags:
   - open-source
 ---
 
-Nous automatisons nos tests, nos déploiements et notre intégration continue. Sur bien des projets, l'installation locale reste pourtant une liste d'instructions à suivre à la main, et c'est souvent la première chose qu'un nouveau collègue rencontre. Chaque étape de cette liste est une occasion de se tromper.
+Un nouveau collègue clone votre projet, ouvre le README et commence une liste d'instructions à suivre à la main. Chaque étape est une occasion de se tromper, et sa première journée passe à déboguer son environnement plutôt que le code. Nous automatisons pourtant nos tests, nos déploiements et notre intégration continue.
 
-Lorsque j'ai rejoint [eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, l'installation était un véritable frein. Elle s'est améliorée par itérations, et chacune a montré un peu mieux où se logeait le problème.
+Lorsque j'ai rejoint [eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, l'installation était un véritable frein : PHP, Node.js et PostgreSQL à installer et configurer à la main. Elle tient aujourd'hui en une commande. Entre les deux, nous avons essayé Docker, puis une documentation détaillée, et aucun des deux n'a suffi. Ce qui leur manquait montre assez bien où se trouve le vrai coût d'une installation manuelle.
 
 ## Tout installer à la main
 
@@ -69,6 +70,8 @@ Cette automatisation n'est pas universelle. Le script fonctionne sur Ubuntu, y c
 Docker n'est pas obligatoire. Il a été utile sur eMush parce que plusieurs technologies y cohabitent. Sur une stack homogène, par exemple entièrement en JavaScript, des scripts natifs peuvent suffire.
 
 Je viserais donc, par défaut, une installation en une seule commande : chaque étape laissée au lecteur d'une documentation est une étape où sa machine peut diverger de la vôtre. L'outil dépend de la stack, Docker quand plusieurs technologies cohabitent, un script natif sinon. Et tant que le script ne couvre pas toutes les plateformes, la documentation reste nécessaire pour les autres.
+
+Si vous voulez simplifier l'installation de votre projet, ou échanger sur l'ingénierie logicielle, le ML engineering ou l'IA générative, vous pouvez me contacter sur [LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/).
 
 ## Références
 
