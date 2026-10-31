@@ -15,6 +15,14 @@
           "commands": ["clear", "mise run serve"]
         },
       ],
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "claude",
+          "commands": ["claude"]
+        },
+      ],
     }
   ]
 }
