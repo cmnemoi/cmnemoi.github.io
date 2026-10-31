@@ -1,6 +1,7 @@
 # My Blog
 
-Uses Hugo.
+Uses Hugo, installed with [mise](https://mise.jdx.dev).
 
-- Create a new post : `hugo new content content/posts/my-new-post.md`
-- Run the server : `hugo server`
+- Install tools : `mise install`
+- Create a new post : `mise run new my-new-post`
+- Run the server : `mise run serve`

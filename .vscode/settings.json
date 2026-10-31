@@ -4,7 +4,7 @@
       "splitTerminals": [
         {
           "name": "shell",
-          "commands": ["devbox shell", "clear"]
+          "commands": ["clear"]
         },
       ],
     },
@@ -12,7 +12,7 @@
       "splitTerminals": [
         {
           "name": "watch",
-          "commands": ["devbox shell", "clear", "hugo server"]
+          "commands": ["clear", "mise run serve"]
         },
       ],
     }
