@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleEnd from '../../components/ArticleEnd.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const words = (post.body ?? '').split(/\s+/).length;
+const minutes = Math.max(1, Math.round(words / 230));
+const date = post.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={post.data.title} description={post.data.description}>
+  <article class="wrap">
+    <header>
+      <h1>{post.data.title}</h1>
+      <p class="desc">{post.data.description}</p>
+      <p class="meta"><a href="/blog">Blog</a> · <time datetime={post.data.date.toISOString()}>{date}</time> · {minutes} min de lecture</p>
+    </header>
+    <div class="prose"><Content /></div>
+    <ArticleEnd />
+  </article>
+</Base>
+
+<style>
+  article { padding-block: clamp(48px, 7vw, 104px); }
+  header, .prose, article :global(.end) { max-width: 720px; margin-inline: auto; }
+  .meta { color: var(--mute); font-size: var(--fs-small); }
+  .meta a { color: var(--blue); font-weight: 700; text-decoration: none; }
+  h1 { font-size: var(--fs-figure); font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; margin-bottom: 20px; text-wrap: balance; }
+  .desc { font-size: var(--fs-lede); color: var(--mute); line-height: 1.45; }
+  .meta { padding-block: 16px 40px; border-bottom: 1px solid var(--ink); margin-bottom: 40px; }
+  .prose { font-size: var(--fs-body); line-height: 1.7; }
+  .prose :global(> * + *) { margin-top: 1.25em; }
+  .prose :global(h2) { font-size: var(--fs-title); font-weight: 900; letter-spacing: -0.025em; line-height: 1.1; margin-top: 2.2em; }
+  .prose :global(h3) { font-size: var(--fs-step); font-weight: 800; margin-top: 1.8em; }
+  .prose :global(a) { color: var(--blue); }
+  .prose :global(ul), .prose :global(ol) { padding-left: 1.3em; }
+  .prose :global(li + li) { margin-top: 0.4em; }
+  .prose :global(li::marker) { color: var(--blue); }
+  .prose :global(blockquote) { border-left: 1px solid var(--ink); padding-left: 20px; color: var(--mute); }
+  .prose :global(:not(pre) > code) { font-size: 0.9em; background: var(--ghost); padding: 0.1em 0.35em; }
+  .prose :global(pre) { font-size: var(--fs-small); line-height: 1.6; padding: 20px 22px; border: 1px solid var(--line); overflow-x: auto; }
+  .prose :global(img) { height: auto; border: 1px solid var(--line); }
+  .prose :global(table) { border-collapse: collapse; width: 100%; font-size: var(--fs-ui); }
+  .prose :global(th), .prose :global(td) { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
+</style>

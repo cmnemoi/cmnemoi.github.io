@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T22:58:13.375678+00:00",
+  "title": "Design System: Charles-Meldhine · Ingénieur IA",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Bleu Validé",
+        "canonical": "#1d3bbf",
+        "tonalRamp": [
+          "#0b1543",
+          "#111f63",
+          "#152c91",
+          "#1d3bbf",
+          "#4a63d1",
+          "#8495e0",
+          "#c3cbf0",
+          "#eef1fc"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Encre",
+        "canonical": "#111318",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Gris Note",
+        "canonical": "#4f5563",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Filet",
+        "canonical": "#e4e7ec",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "ghost": {
+        "role": "neutral",
+        "displayName": "Fantôme",
+        "canonical": "#f3f4f6",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "hatch": {
+        "role": "neutral",
+        "displayName": "Hachure claire",
+        "canonical": "#c9ced6",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papier",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      },
+      "on-blue-soft": {
+        "role": "neutral",
+        "displayName": "Bleu Pâle",
+        "canonical": "#dfe4fb",
+        "tonalRamp": [
+          "#0b1543",
+          "#111f63",
+          "#152c91",
+          "#1d3bbf",
+          "#4a63d1",
+          "#8495e0",
+          "#c3cbf0",
+          "#dfe4fb"
+        ]
+      },
+      "ghost-ink": {
+        "role": "neutral",
+        "displayName": "Encre fantôme",
+        "canonical": "#6b7280",
+        "tonalRamp": [
+          "#08090c",
+          "#111318",
+          "#2a2e37",
+          "#4f5563",
+          "#767c88",
+          "#a3a8b1",
+          "#d3d6dc",
+          "#f3f4f6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titre du hero, capitales, pleine largeur, un mot en bleu."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titres de section en capitales 900."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Chiffres de preuve, chiffres tabulaires."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Titres d'études de cas, casse normale."
+      },
+      "step": {
+        "displayName": "Step",
+        "purpose": "Titres d'articles listés, question de fin d'article, sous-intertitres."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Sous-titres en gris note, 40ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texte courant, prose d’article, libellés des rails."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Navigation, légendes des chiffres, métadonnées."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Dates, badge, auteurs des avis, pied de page."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Numéros d'étape 01 à 07."
+      }
+    },
+    "shadows": [
+      {
+        "name": "status-halo",
+        "value": "0 0 0 4px rgb(29 59 191 / 0.15)",
+        "purpose": "Halo du point de disponibilité du badge, seul usage."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Courbe unique des transitions d'état."
+      },
+      {
+        "name": "button",
+        "value": "0.25s",
+        "purpose": "Survol des boutons et glissement de la flèche (4px)."
+      },
+      {
+        "name": "step-light",
+        "value": "0.6s",
+        "purpose": "Allumage des étapes 05 à 07 au défilement."
+      },
+      {
+        "name": "marquee",
+        "value": "38s linear infinite",
+        "purpose": "Bandeau de logos, arrêté au survol et sous prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "520px"
+      },
+      {
+        "name": "sm",
+        "value": "600px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "lg",
+        "value": "900px"
+      },
+      {
+        "name": "xl",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton primaire",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action principale : réserver un appel.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Réserver un appel <svg viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" aria-hidden=\"true\"><path d=\"M3 10h13M11 4.5 16.5 10 11 15.5\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.6em;background:var(--blue);color:#fff;font-family:var(--font);font-weight:800;text-decoration:none;padding:.85em 1.35em;transition:background .25s var(--ease)}.ds-btn:hover{background:var(--ink);color:#fff}.ds-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.ds-btn svg{width:1em;height:1em;transition:transform .25s var(--ease)}.ds-btn:hover svg{transform:translateX(4px)}"
+    },
+    {
+      "name": "Bouton clair (sur bleu)",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Action sur le bandeau CTA bleu.",
+      "html": "<div class=\"ds-on-blue\"><a class=\"ds-btn-light\" href=\"#\">Réserver un appel</a></div>",
+      "css": ".ds-on-blue{background:var(--blue);padding:32px}.ds-btn-light{display:inline-flex;background:#fff;color:var(--blue);font-family:var(--font);font-weight:800;font-size:1.15rem;text-decoration:none;padding:1.05em 1.6em;transition:background .25s var(--ease),color .25s var(--ease)}.ds-btn-light:hover{background:var(--ink);color:#fff}.ds-btn-light:focus-visible{outline:3px solid #fff;outline-offset:3px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Barre collante : nom, liens, bouton d'appel.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-who\" href=\"#\">Charles-Meldhine <span>· Ingénieur IA</span></a><nav><a href=\"#\">Offre</a><a href=\"#\">Études de cas</a><a href=\"#\">Blog</a><a class=\"ds-nav-btn\" href=\"#\">Réserver un appel</a></nav></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 24px;background:rgb(255 255 255/.94);border-bottom:1px solid var(--line);font-family:var(--font);color:var(--ink)}.ds-who{font-weight:800;text-decoration:none;color:inherit}.ds-who span{font-weight:400;color:var(--mute)}.ds-nav nav{display:flex;align-items:center;gap:28px}.ds-nav nav a{text-decoration:none;color:inherit}.ds-nav nav a:hover{color:var(--blue)}.ds-nav .ds-nav-btn{background:var(--blue);color:#fff;font-weight:800;padding:.7em 1.1em}.ds-nav .ds-nav-btn:hover{background:var(--ink);color:#fff}"
+    },
+    {
+      "name": "Badge de statut",
+      "kind": "chip",
+      "refersTo": "status-badge",
+      "description": "Disponibilité, un seul par page.",
+      "html": "<p class=\"ds-badge\"><i></i>En mission · Prochaines disponibilités à discuter</p>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:6px 14px;font-family:var(--font);font-size:.95rem;color:var(--ink)}.ds-badge i{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgb(29 59 191/.15)}"
+    },
+    {
+      "name": "Étiquette d'étape",
+      "kind": "chip",
+      "refersTo": "step-tag",
+      "description": "Numéro d'étape cerné, s'allume quand l'étape est atteinte.",
+      "html": "<span class=\"ds-tag\">05</span> <span class=\"ds-tag is-lit\">06</span>",
+      "css": ".ds-tag{display:inline-block;font-family:var(--font);font-size:.9rem;font-weight:700;letter-spacing:.08em;font-variant-numeric:tabular-nums;border:1px solid var(--ink);padding:6px 8px;line-height:1;color:var(--ink);transition:background .6s var(--ease),color .6s var(--ease),border-color .6s var(--ease)}.ds-tag.is-lit,.ds-tag:hover{background:var(--blue);color:#fff;border-color:var(--blue)}"
+    },
+    {
+      "name": "Rail du pipeline",
+      "kind": "custom",
+      "refersTo": "rail-step-done",
+      "description": "Signature : étapes validées en bleu, étapes à venir en fantôme hachuré.",
+      "html": "<ol class=\"ds-rail\"><li class=\"ds-done\"><span>03</span>Déploiement</li><li class=\"ds-done\"><span>04</span>En prod</li><li class=\"ds-ghost\"><span>05</span>Fiabiliser</li><li class=\"ds-ghost\"><span>06</span>Maintenir</li></ol>",
+      "css": ".ds-rail{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink);font-family:var(--font)}.ds-rail li{display:flex;flex-direction:column;gap:8px;min-height:92px;justify-content:space-between;padding:14px 16px 18px;border-right:1px solid var(--ink);font-weight:900;text-transform:uppercase;font-size:1.2rem;line-height:1;letter-spacing:-.01em}.ds-rail li:last-child{border-right:0}.ds-rail span{font-size:.8rem;font-weight:700;letter-spacing:.08em}.ds-done{background:var(--blue);color:#fff;border-right-color:rgb(255 255 255/.35)!important}.ds-done:nth-child(2){border-right-color:var(--ink)!important}.ds-ghost{color:var(--mute);background:repeating-linear-gradient(135deg,#fff 0 9px,var(--ghost) 9px 10px);transition:background .6s var(--ease),color .6s var(--ease)}.ds-ghost:hover{background:var(--blue);color:#fff}"
+    },
+    {
+      "name": "Ligne d'offre à losange",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Liste des fronts : puce losange bleue, filet gris entre lignes.",
+      "html": "<ul class=\"ds-diamonds\"><li>Tests automatisés sur le code autour du modèle</li><li>Une CI qui bloque les régressions à chaque push</li></ul>",
+      "css": ".ds-diamonds{list-style:none;padding:0;margin:0;max-width:62ch;font-family:var(--font);font-size:18px;line-height:1.55;color:var(--ink)}.ds-diamonds li{position:relative;padding:12px 0 12px 28px;border-top:1px solid var(--line)}.ds-diamonds li::before{content:'';position:absolute;left:2px;top:1.15em;width:10px;height:10px;border:2px solid var(--blue);transform:rotate(45deg)}"
+    },
+    {
+      "name": "Encart de fin d'article",
+      "kind": "card",
+      "refersTo": "article-end-card",
+      "description": "CTA cerné d'encre en fin d'article.",
+      "html": "<aside class=\"ds-end\"><div><p class=\"ds-end-t\">Votre IA en prod devient difficile à faire évoluer ?</p><p class=\"ds-end-p\">Je rends les produits IA fiables et maintenables.</p><a class=\"ds-btn\" href=\"#\">Réserver un appel</a></div></aside>",
+      "css": ".ds-end{border:1px solid var(--ink);padding:28px;font-family:var(--font);color:var(--ink)}.ds-end-t{margin:0;font-weight:900;font-size:1.4rem;line-height:1.15;letter-spacing:-.02em}.ds-end-p{color:var(--mute);margin:8px 0 20px}.ds-end .ds-btn{display:inline-flex;background:var(--blue);color:#fff;font-weight:800;text-decoration:none;padding:.85em 1.35em}.ds-end .ds-btn:hover{background:var(--ink)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le Pipeline Validé",
+    "overview": "Le site se lit comme une sortie de CI. Chaque bloc est une étape numérotée, cernée d'un filet d'encre ; ce qui est passé est plein de bleu, ce qui reste à faire est dessiné en fantôme hachuré. Le bleu roi ne décore jamais : il veut dire « validé » ou « en cours ». Tout le reste est encre sur papier blanc, avec une grotesque très grasse en capitales qui porte la voix des cards LinkedIn de Charles.\n\nLa densité est éditoriale : grandes marges latérales, sections hautes, peu d'éléments par écran, mais des titres énormes qui occupent toute la largeur. La profondeur ne vient pas des ombres : elle vient des filets (encre pour structurer, gris clair pour séparer) et du contraste plein / hachuré. Le mouvement est rare et signifiant : une étape s'allume quand on l'atteint.",
+    "keyCharacteristics": [
+      "Papier blanc, encre quasi noire, un seul bleu qui signifie un état.",
+      "Grotesque Archivo en 900, capitales, interlignage serré, un mot clé en bleu.",
+      "Angles vifs partout ; seuls les portraits et les points de données sont ronds.",
+      "Blocs numérotés (01 à 07) cernés d'un filet d'encre de 1px.",
+      "Étapes à venir en hachures diagonales à 135°."
+    ],
+    "rules": [
+      {
+        "name": "La Règle du Bleu qui Signifie",
+        "body": "Le bleu marque un état (validé, en cours, cliquable, mot clé). Un aplat bleu sans signification n'existe pas ; le seul grand aplat est le bandeau CTA, qui est l'étape suivante.",
+        "section": "colors"
+      },
+      {
+        "name": "La Règle de l'Accent Unique",
+        "body": "Aucune deuxième couleur d'accent, pas de vert de succès : la validation s'écrit en bleu avec une coche.",
+        "section": "colors"
+      },
+      {
+        "name": "La Règle du Mot Bleu",
+        "body": "Un titre display porte au plus un mot ou groupe clé en bleu, sans italique.",
+        "section": "typography"
+      },
+      {
+        "name": "La Règle des Capitales Pleines",
+        "body": "Les capitales sont réservées au 900 serré (titres display, fronts, libellés de rail, citation mise en avant). Jamais de capitales espacées en petit corps.",
+        "section": "typography"
+      },
+      {
+        "name": "La Règle du Cadre Découpé",
+        "body": "On divise un cadre par des filets, on n'aligne pas des cartes flottantes de même taille.",
+        "section": "layout"
+      },
+      {
+        "name": "La Règle du Filet, pas de l'Ombre",
+        "body": "Un élément se détache par un filet ou un aplat, jamais par une ombre.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** réserver le bleu (#1d3bbf) aux états validés, aux actions et au mot clé d'un titre.",
+      "**Do** cerner les blocs structurants d'un filet d'encre de 1px et séparer les lignes internes d'un filet #e4e7ec.",
+      "**Do** numéroter les étapes (01 à 07) en label 700, +0.08em, chiffres tabulaires.",
+      "**Do** dessiner ce qui reste à faire en hachure diagonale à 135°, et ce qui est fait en aplat bleu avec une coche.",
+      "**Do** composer les titres en Archivo 900, capitales, interlignage 0.92, approche -0.035em.",
+      "**Do** donner à chaque chiffre clé sa propre forme graphique plutôt qu'une icône.",
+      "**Do** respecter `prefers-reduced-motion` : défilement doux et bandeau de logos coupés."
+    ],
+    "donts": [
+      "**Don't** arrondir les boutons, cadres ou étiquettes ; le rond est réservé aux portraits et aux points de données.",
+      "**Don't** ajouter une ombre portée pour détacher un élément.",
+      "**Don't** introduire une deuxième couleur d'accent, ni un vert de succès.",
+      "**Don't** utiliser le bleu comme aplat décoratif sans signification d'état.",
+      "**Don't** ajouter une deuxième famille de caractères.",
+      "**Don't** poser de petites capitales espacées au-dessus des titres."
+    ]
+  }
+}

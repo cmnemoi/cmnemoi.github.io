@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+import { CALENDLY, EMAIL, LINKEDIN, GITHUB } from '../site';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const fullTitle = title === 'Accueil'
+  ? 'Charles-Meldhine Madi Mnemoi · Ingénieur IA freelance'
+  : `${title} · Charles-Meldhine`;
+const ogImage = new URL('/og.png', Astro.site);
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="Charles-Meldhine Madi Mnemoi" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate" type="application/rss+xml" title="Blog de Charles-Meldhine" href="/rss.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="nav wrap">
+    <a class="who" href="/">Charles-Meldhine <span>· Ingénieur IA</span></a>
+    <nav aria-label="Principale">
+      <a class="hide-sm" href="/#offre">Offre</a>
+      <a class="hide-sm" href="/#cas">Études de cas</a>
+      <a class="hide-sm" href="/#avis">Avis</a>
+      <a href="/blog">Blog</a>
+      <a class="btn" href={CALENDLY}>Réserver un appel</a>
+    </nav>
+  </header>
+
+  <main id="contenu"><slot /></main>
+
+  <footer class="foot wrap">
+    <div class="sig">
+      <img src="/photo.jpg" alt="" width="64" height="64" loading="lazy" />
+      <p><b>Charles-Meldhine Madi Mnemoi</b><br />Ingénieur IA freelance · Île-de-France et Hauts-de-France</p>
+    </div>
+    <ul>
+      <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+      <li><a href={LINKEDIN}>LinkedIn</a></li>
+      <li><a href={GITHUB}>GitHub</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/mentions-legales">Mentions légales</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
+
+<style>
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; z-index: 10; }
+  .skip:focus { left: 8px; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding-block: 18px;
+    background: rgb(255 255 255 / 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: saturate(1.4) blur(10px);
+  }
+  .who { font-weight: 800; font-size: var(--fs-ui); text-decoration: none; white-space: nowrap; }
+  .who span { font-weight: 400; color: var(--mute); }
+  nav { display: flex; align-items: center; gap: clamp(16px, 2.5vw, 36px); font-size: var(--fs-ui); }
+  nav a:not(.btn) { text-decoration: none; }
+  nav .btn { padding: 0.7em 1.1em; white-space: nowrap; }
+  @media (max-width: 900px) {
+    .nav { flex-wrap: wrap; row-gap: 10px; padding-block: 14px 10px; }
+    nav { display: contents; }
+    .nav::after { content: ''; order: 2; flex-basis: 100%; }
+    nav a:not(.btn) { order: 3; font-size: var(--fs-small); color: var(--mute); }
+    nav .btn { order: 1; }
+  }
+  @media (max-width: 520px) { .who span { display: none; } .who, nav { font-size: var(--fs-small); } nav { gap: 14px; } nav .btn { padding: 0.65em 0.8em; } }
+
+  .foot {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px;
+    padding-block: 48px; border-top: 1px solid var(--ink); font-size: var(--fs-small);
+  }
+  .sig { display: flex; gap: 16px; align-items: center; }
+  .sig img { border-radius: 50%; }
+  .sig p { color: var(--mute); line-height: 1.4; }
+  .sig b { color: var(--ink); }
+  .foot ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; }
+</style>

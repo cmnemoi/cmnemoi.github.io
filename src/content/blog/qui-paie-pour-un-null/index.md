@@ -1,7 +1,7 @@
 ---
 title: "Qui paie pour un null ?"
 date: 2026-09-15T12:00:00+02:00
-description: "Une fonction d'eMush de dix lignes qui peut planter en production, et trois façons de traiter un `null` : le vérifier, lever une exception ou renvoyer un objet par défaut."
+description: "Une fonction d’eMush de dix lignes qui peut planter en production, et trois façons de traiter un `null` : le vérifier, lever une exception ou renvoyer un objet par défaut."
 toc: false
 tags:
   - php
