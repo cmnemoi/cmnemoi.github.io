@@ -1,0 +1,79 @@
+.github/workflows/deploy.yml
+  s_5e92c744bd7f6e::t_187c79fd338e57 1,4,14-15,17-18,23
+.gitignore
+  s_5e92c744bd7f6e::t_4a9b4086897b67 1-5
+.impeccable/design.json
+  s_5e92c744bd7f6e::t_2eda1072ed8e90 1-363
+.impeccable/surfaces/src-pages-index-astro.md
+  s_5e92c744bd7f6e::t_04f318c1fce856 1-23
+DESIGN.md
+  s_5e92c744bd7f6e::t_d29f1763928f89 1-263
+PRODUCT.md
+  s_5e92c744bd7f6e::t_eeebe97f1921f1 1-66
+README.md
+  s_5e92c744bd7f6e::t_f13aea2bc276ea 1,3,5-13
+astro.config.mjs
+  s_5e92c744bd7f6e::t_8183da05156062 1-14
+mise.toml
+  s_5e92c744bd7f6e::t_fc25dd41e97560 2,5-6
+package-lock.json
+  s_5e92c744bd7f6e::t_eb5863e6c1928a 1-3901
+package.json
+  s_5e92c744bd7f6e::t_45a1936dbb46e6 1-15
+public/favicon.svg
+  s_5e92c744bd7f6e::t_fccf78c06bdac3 1
+public/logos/adeo.svg
+  s_5e92c744bd7f6e::t_30241827421b2b 1-65
+public/logos/eternaltwin.svg
+  s_5e92c744bd7f6e::t_f0ec0ef6aafb43 1-150
+public/logos/lexisnexis.svg
+  s_5e92c744bd7f6e::t_7dc8f5b40cee95 1-23
+public/logos/roubaix.svg
+  s_5e92c744bd7f6e::t_3562d6e5421a92 1-8
+public/logos/servier.svg
+  s_5e92c744bd7f6e::t_2c460918f83af5 1
+src/components/ArticleEnd.astro
+  s_5e92c744bd7f6e::t_8cecad5ebf8a0d 1-18
+src/content.config.ts
+  s_5e92c744bd7f6e::t_f098bc962815a8 1-14
+src/content/blog/pourquoi-vos-rebases-echouent.md
+  s_5e92c744bd7f6e::t_feaeb070d9a6d0 2,4
+src/content/blog/qui-paie-pour-un-null/index.md
+  s_5e92c744bd7f6e::t_a8da240a5cacca 4
+src/content/blog/votre-projet-devrait-sinstaller-en-une-seule-commande.md
+  s_5e92c744bd7f6e::t_f8b9eea584e2f0 4
+src/layouts/Base.astro
+  s_5e92c744bd7f6e::t_7fd75e4426cad7 1-96
+src/pages/blog/[...slug].astro
+  s_5e92c744bd7f6e::t_bf0637ac7f37c0 1-50
+src/pages/blog/index.astro
+  s_5e92c744bd7f6e::t_dd1f2862d7c9ee 1-96
+src/pages/index.astro
+  s_5e92c744bd7f6e::t_704ba0c51a316f 1-468
+src/pages/mentions-legales.astro
+  s_5e92c744bd7f6e::t_6e78bd83af1cf3 1-22
+src/pages/rss.xml.js
+  s_5e92c744bd7f6e::t_a20c6c14d164ad 1-12
+src/site.ts
+  s_5e92c744bd7f6e::t_11fa8df8309750 1-4
+src/styles/global.css
+  s_5e92c744bd7f6e::t_68e1f91b04258e 1-85
+src/talks.ts
+  s_5e92c744bd7f6e::t_eb83001186bff8 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a93246cf319ce9af39479f4d8072023dd850ca9f",
+  "prompts": {},
+  "sessions": {
+    "s_5e92c744bd7f6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4bcaa17b-f756-4f38-b35d-3d28cbbd9c7b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  }
+}
