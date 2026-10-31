@@ -1,0 +1,18 @@
+---
+import { CALENDLY } from '../site';
+---
+<aside class="end">
+  <img src="/photo.jpg" alt="" width="72" height="72" loading="lazy" />
+  <div>
+    <p class="t">Votre IA en prod devient difficile à faire évoluer&nbsp;?</p>
+    <p>Je suis Charles-Meldhine, ingénieur IA qui aide les équipes à déployer des agents en production, au plus près des personnes qui les utilisent.</p>
+    <a class="btn" href={CALENDLY}>Réserver un appel</a>
+  </div>
+</aside>
+<style>
+  .end { display: flex; gap: 24px; align-items: flex-start; border: 1px solid var(--ink); padding: 28px; margin-top: 72px; }
+  .end img { border-radius: 50%; flex: none; }
+  .t { font-weight: 900; font-size: var(--fs-step); line-height: 1.15; letter-spacing: -0.02em; }
+  .end p + p { color: var(--mute); margin-block: 8px 20px; }
+  @media (max-width: 560px) { .end { flex-direction: column; } }
+</style>

@@ -1,7 +1,7 @@
 ---
 title: "Votre projet devrait s’installer en une seule commande"
 date: 2025-10-18T14:58:46+02:00
-description: "Comment l'installation d'eMush est passée de trois technologies configurées à la main à une seule commande, et ce que Docker n'a pas réglé."
+description: "Comment l’installation d’eMush est passée de trois technologies configurées à la main à une seule commande, et ce que Docker n’a pas réglé."
 toc: false
 tags:
   - devops

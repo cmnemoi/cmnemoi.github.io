@@ -1,0 +1,468 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { CALENDLY, EMAIL, LINKEDIN } from '../site';
+import { TALKS } from '../talks';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const today = new Date();
+const dateFr = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const steps = [
+  { n: '01', label: 'Prototype', done: true },
+  { n: '02', label: 'Build', done: true },
+  { n: '03', label: 'Déploiement', done: true },
+  { n: '04', label: 'En prod', done: true },
+  { n: '05', label: 'Fiabiliser' },
+  { n: '06', label: 'Maintenir' },
+  { n: '07', label: 'Accélérer' },
+];
+
+const pains = [
+  'On n’ose plus toucher au prompt.',
+  'Chaque correction casse autre chose.',
+  'On ne sait pas si la nouvelle version répond mieux que l’ancienne.',
+  'On livrait vite au début. Plus maintenant.',
+];
+
+const fronts = [
+  {
+    n: '05', title: 'Fiabiliser',
+    text: 'Vous savez si une nouvelle version répond mieux que l’ancienne avant de la livrer, pas après les retours des utilisateurs.',
+    items: ['Tests automatisés sur le code autour du modèle', 'Évaluation automatique des réponses sur des questions de référence écrites avec le métier', 'Une CI qui bloque les régressions à chaque push', 'Logs et traces pour comprendre une mauvaise réponse en prod'],
+  },
+  {
+    n: '06', title: 'Maintenir',
+    text: 'Changer un prompt, un modèle ou un outil ne casse plus le reste du produit.',
+    items: ['Refactoring progressif, sans geler les livraisons', 'Inversion de dépendances : le modèle et les fournisseurs restent remplaçables', 'Revue de code systématique, avec des règles écrites'],
+  },
+  {
+    n: '07', title: 'Accélérer',
+    text: 'Votre équipe livre mieux, plus vite et dans de bonnes conditions, et continue après mon départ.',
+    items: ['CI/CD rapide, déploiement en un clic', 'Un flux de travail clair, du besoin métier jusqu’au déploiement', 'Des revues de code qui font progresser toute l’équipe'],
+  },
+];
+
+const logos = [
+  { src: '/logos/lexisnexis.svg', alt: 'LexisNexis', h: 30 },
+  { src: '/logos/adeo.svg', alt: 'ADEO (Leroy Merlin)', h: 44 },
+  { src: '/logos/servier.svg', alt: 'Servier', h: 32 },
+  { src: '/logos/roubaix.svg', alt: 'Ville de Roubaix', h: 34 },
+  { src: '/logos/eternaltwin.svg', alt: 'Eternaltwin', h: 50 },
+];
+
+const reviews = [
+  { who: 'Romain Philippe', role: 'Lead Data Scientist, Servier', text: 'Charles a joué un rôle déterminant dans un projet d’assistant IA basé sur un RAG, déployé sur Google Cloud Run, qui a permis à plus de 500 collaborateurs d’accroître leur productivité. […] Ce qui m’a le plus marqué : son autonomie, sa maturité et rigueur technique, et sa volonté de mener des projets de bout en bout, de la conception à la production.' },
+  { who: 'Guillaume Astor', role: 'Data Engineering Manager, SFEIR', text: 'Il a joué un rôle clé dans la migration du prototype vers une API FastAPI robuste, ainsi que dans le monitoring des pipelines d’indexation qui garantissent aujourd’hui la qualité et la fraîcheur des données.' },
+  { who: 'William Dechamps', role: 'Développeur full-stack, ex-Orange, contributeur eMush', text: 'Ce qui m’a le plus marqué, c’est sa disponibilité et sa pédagogie : il a toujours pris le temps de répondre à mes questions, de m’orienter vers les bonnes pratiques du projet et de proposer des revues de code constructives.' },
+  { who: 'Robin Deparpe', role: 'Consultant fonctionnel, Devoteam', text: 'Ce qui m’a le plus marqué, c’est sa capacité à accompagner les développeurs, qu’ils soient débutants ou expérimentés, tout en gardant une vision technique et fonctionnelle claire.' },
+  { who: 'Bryen Param', role: 'ML Engineer, ex-Total, Servier', text: 'Ce qui m’a le plus marqué, c’est sa capacité à expliquer clairement des concepts complexes et à m’accompagner dans ma montée en compétences sur Python, les bonnes pratiques de développement et les pipelines CI/CD.' },
+  { who: 'Anthony Cyrille', role: 'CTO et formateur, eSWIT', text: 'Son approche est structurée, pragmatique et orientée qualité. Il pose de bonnes questions, challenge les choix techniques avec bienveillance et pédagogie.' },
+];
+---
+<Base title="Accueil" description="Ingénieur IA freelance. Votre agent IA est en prod, et après ? J’interviens après vos premières mises en prod : je rends votre produit IA fiable et maintenable, puis j’accélère vos livraisons.">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <p class="badge"><i></i>En mission · Prochaines disponibilités à discuter</p>
+    <h1 class="display">Votre agent IA <br class="lg" />est en prod.<br />Et <em>après</em>&nbsp;?</h1>
+    <div class="hero-row">
+      <p class="lede">J’interviens après vos premières mises en prod. Je rends votre produit IA <b>fiable et maintenable</b>, puis j’accélère vos livraisons.</p>
+      <a class="btn big" href={CALENDLY}>Réserver un appel de 30&nbsp;min <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" /></svg></a>
+    </div>
+    <ol class="rail" aria-label="Le cycle de vie d’un produit IA">
+      {steps.map((s) => (
+        <li class:list={['step', s.done ? 'done' : 'ghost']}>
+          {s.n === '04' && <span class="here">Vous êtes ici</span>}
+          <span class="num">{s.n}{s.done && <svg viewBox="0 0 16 16" aria-label="terminé"><path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" /></svg>}</span>
+          <span class="label">{s.label}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="proof wrap" aria-label="Quelques chiffres">
+    <figure class="fig">
+      <div class="dots" aria-hidden="true">{Array.from({ length: 50 }, () => <i />)}</div>
+      <p class="big">500+</p>
+      <figcaption>collaborateurs utilisent chaque jour le chatbot RAG que j’ai industrialisé chez Servier.</figcaption>
+    </figure>
+    <figure class="fig">
+      <div class="bar" aria-hidden="true"><span style="width:80%"></span></div>
+      <p class="big">80&nbsp;%</p>
+      <figcaption>de bonnes réponses, mesurées par une évaluation automatique lancée à chaque push.</figcaption>
+    </figure>
+    <figure class="fig">
+      <div class="stack" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="big">500&nbsp;k€</p>
+      <figcaption>d’économies par an pour le produit de suivi de production de médicaments auquel j’ai contribué.</figcaption>
+    </figure>
+    <figure class="fig">
+      <div class="before" aria-hidden="true"><span class="was">Avant : plusieurs semaines</span><span class="now"></span></div>
+      <p class="big">10&nbsp;min</p>
+      <figcaption>pour générer 160 tableaux de bord à la Ville de Roubaix, contre plusieurs semaines avant.</figcaption>
+    </figure>
+  </section>
+
+  <!-- LOGOS -->
+  <div class="logos" aria-label="Ils m’ont fait confiance">
+    <p class="wrap">Ils m’ont fait confiance</p>
+    <div class="marquee">
+      {[0, 1].map((copy) => (
+        <ul aria-hidden={copy === 1 ? 'true' : undefined}>
+          {logos.map((l) => <li><img src={l.src} alt={copy === 0 ? l.alt : ''} style={`height:${l.h}px`} loading="lazy" /></li>)}
+        </ul>
+      ))}
+    </div>
+  </div>
+
+  <!-- DOULEURS -->
+  <section class="pains wrap">
+    <h2 class="display">Une de ces phrases vous dit quelque chose&nbsp;?</h2>
+    <ul>
+      {pains.map((p) => <li>« {p} »</li>)}
+    </ul>
+    <p class="lede">Elles arrivent quand un produit IA grandit plus vite que le code qui le porte. <b>Ce n’est pas une fatalité, c’est du travail d’ingénierie.</b></p>
+  </section>
+
+  <!-- OFFRE -->
+  <section id="offre" class="offer wrap rule">
+    <h2 class="display">Trois étapes après la <em>mise en prod</em>.</h2>
+    <div class="offer-grid">
+      <ol class="side-rail" aria-hidden="true">
+        <li class="done"><span>04</span>En prod</li>
+        {fronts.map((f) => <li data-step={f.n}><span>{f.n}</span>{f.title}</li>)}
+      </ol>
+      <div>
+        {fronts.map((f) => (
+          <article class="front" data-front={f.n}>
+            <h3><span class="tag">{f.n}</span>{f.title}</h3>
+            <p class="lede">{f.text}</p>
+            <ul>{f.items.map((i) => <li>{i}</li>)}</ul>
+          </article>
+        ))}
+        <dl class="format">
+          <div><dt>Format</dt><dd>Temps plein, temps partiel ou forfait</dd></div>
+          <div><dt>Lieu</dt><dd>À distance, ou hybride en Île-de-France et Hauts-de-France</dd></div>
+          <div><dt>Tarif</dt><dd>Devis après un appel de 30 minutes</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉTUDES DE CAS -->
+  <section id="cas" class="cases wrap rule">
+    <h2 class="display">Deux produits, <em>de près</em>.</h2>
+
+    <article class="case">
+      <header>
+        <h3>Knowledge Bot : un chatbot RAG utilisé par 500 collaborateurs</h3>
+        <p class="meta">Servier · 18 mois</p>
+      </header>
+      <div class="case-body">
+        <p>Un assistant interne qui répond aux questions des équipes à partir de la documentation de l’entreprise. Au départ, un prototype Streamlit. Il fallait le rendre solide pour trois filiales.</p>
+        <ul>
+          <li>Migration du prototype vers une API FastAPI déployée sur Cloud Run</li>
+          <li>Pipelines d’indexation avec Cloud Run Jobs et Workflows</li>
+          <li>Évaluation automatique : un LLM note les réponses sur des questions de référence écrites avec le métier, à chaque push dans GitLab CI</li>
+          <li>Prompt engineering et découpage des documents, guidés par cette évaluation</li>
+          <li>Tests pytest, monitoring Grafana, application Teams</li>
+        </ul>
+      </div>
+      <dl class="results">
+        <div><dt>500+</dt><dd>utilisateurs chaque jour</dd></div>
+        <div><dt>80&nbsp;%</dt><dd>de bonnes réponses</dd></div>
+        <div><dt>3</dt><dd>filiales : Brésil, Espagne, Italie</dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <header>
+        <h3>Protégé : un assistant juridique à base d’agents, en production</h3>
+        <p class="meta">LexisNexis · 6 mois</p>
+      </header>
+      <div class="case-body">
+        <p>Un assistant IA utilisé par des professionnels du droit français. Le produit était déjà en production : il fallait le faire évoluer sans casser l’existant.</p>
+        <ul>
+          <li>Fonctionnalités Python du moteur d’orchestration d’agents</li>
+          <li>Routage dynamique de chaque question vers la recherche web ou le RAG agentique</li>
+          <li>Support de plusieurs documents dans les workflows à prompts prédéfinis</li>
+          <li>Intégration de Mistral de A à Z : un modèle européen, pour un assistant souverain</li>
+          <li>Streaming des réponses du chatbot</li>
+        </ul>
+      </div>
+      <dl class="results">
+        <div><dt>Agents</dt><dd>orchestration et routage entre outils</dd></div>
+        <div><dt>Mistral</dt><dd>intégré de A à Z, pour la souveraineté des données</dd></div>
+        <div><dt>Streaming</dt><dd>des réponses, côté API et interface</dd></div>
+      </dl>
+    </article>
+  </section>
+
+  <!-- AVIS -->
+  <section id="avis" class="reviews wrap rule">
+    <h2 class="display">Ce qu’<em>ils</em> en disent.</h2>
+    <div class="review-cols">
+      {reviews.map((r) => (
+        <blockquote class="review">
+          <p>« {r.text} »</p>
+          <footer><b>{r.who}</b><br />{r.role}</footer>
+        </blockquote>
+      ))}
+    </div>
+    <a class="more" href={`${LINKEDIN}details/recommendations/`}>10+ témoignages supplémentaires sur LinkedIn <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" /></svg></a>
+  </section>
+
+  <!-- BLOG -->
+  <section class="latest wrap rule">
+    <div class="latest-head">
+      <h2 class="display">Par <em>écrit</em>.</h2>
+      <a href="/blog">Tous les articles</a>
+    </div>
+    <ul>
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}`}>
+            <time datetime={p.data.date.toISOString()}>{dateFr(p.data.date)}</time>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- TALKS -->
+  <section class="talks wrap rule">
+    <h2 class="display">À voix <em>haute</em>.</h2>
+    <ul>
+      {TALKS.map((t) => {
+        const d = new Date(t.date);
+        return (
+          <li>
+            <time datetime={t.date}>{dateFr(d)}</time>
+            <div>
+              <h3>{t.event}{t.city && <span> · {t.city}</span>}{d > today && <span class="soon">À venir</span>}</h3>
+              <p>{t.title ?? 'Titre à venir'}</p>
+            </div>
+            <div class="links">
+              {t.replay && <a href={t.replay}>Voir le replay</a>}
+              {t.url && <a href={t.url}>Page de l’événement</a>}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+    <p class="invite">Vous organisez un événement&nbsp;? <a href={`mailto:${EMAIL}`}>Écrivez-moi</a>.</p>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="next">
+    <div class="wrap">
+      <h2 class="display">L’étape 05 commence par un appel de 30&nbsp;minutes.</h2>
+      <p>Vous me racontez où en est votre produit IA. Je vous dis honnêtement si je peux vous aider, et comment.</p>
+      <div class="cta-row">
+        <a class="btn big light" href={CALENDLY}>Réserver un appel <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" /></svg></a>
+        <p class="me"><img src="/photo.jpg" alt="" width="56" height="56" loading="lazy" /><span><b>Charles-Meldhine</b><br />Ingénieur IA</span></p>
+      </div>
+      <ol class="mini-rail" aria-hidden="true">
+        <li class="done"><span>04 <svg viewBox="0 0 16 16"><path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" /></svg></span>En prod</li>
+        <li class="now"><span>05</span>Fiabiliser</li>
+        <li><span>06</span>Maintenir</li>
+        <li><span>07</span>Accélérer</li>
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Allume les étapes 05–07 quand on atteint chaque front de l'offre, et toutes celles d'avant.
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const n = (e.target as HTMLElement).dataset.front!;
+      document.querySelectorAll<HTMLElement>('[data-front], .side-rail [data-step]').forEach((el) => {
+        if ((el.dataset.front ?? el.dataset.step)! <= n) el.classList.add('lit');
+      });
+    }
+  }, { rootMargin: '0px 0px -45% 0px' });
+  document.querySelectorAll('[data-front]').forEach((el) => io.observe(el));
+</script>
+
+<style>
+  /* HERO */
+  .hero { padding-block: clamp(28px, 3.5vw, 48px) clamp(48px, 6vw, 72px); }
+  .badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--line); padding: 6px 14px; font-size: var(--fs-small); }
+  .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px rgb(29 59 191 / 0.15); }
+  h1 { font-size: var(--fs-display); margin-top: clamp(16px, 2vw, 28px); }
+  @media (max-width: 760px) { h1 .lg { display: none; } }
+  .hero-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; margin-top: clamp(20px, 2.4vw, 32px); }
+  .btn.big { font-size: var(--fs-body); padding: 1.05em 1.6em; }
+
+  .rail { list-style: none; padding: 0; margin-top: clamp(52px, 4.5vw, 64px); display: grid; grid-template-columns: repeat(7, 1fr); border: 1px solid var(--ink); }
+  .step { position: relative; padding: 14px 16px 18px; border-right: 1px solid var(--ink); min-height: 92px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
+  .step:last-child { border-right: 0; }
+  .step .num { display: flex; align-items: center; gap: 6px; font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+  .step .num svg { width: 14px; height: 14px; }
+  .step .label { font-weight: 900; text-transform: uppercase; font-size: var(--fs-body); letter-spacing: -0.01em; line-height: 1; }
+  .done { background: var(--blue); color: #fff; border-right-color: rgb(255 255 255 / 0.35); }
+  .done:nth-child(4) { border-right-color: var(--ink); }
+  .ghost { color: #6b7280; background: repeating-linear-gradient(135deg, #fff 0 9px, var(--ghost) 9px 10px); }
+  .here { position: absolute; bottom: calc(100% + 10px); left: 0; font-size: var(--fs-label); font-weight: 800; color: var(--blue); white-space: nowrap; }
+  .here::after { content: ''; position: absolute; left: 16px; top: calc(100% + 1px); border: 6px solid transparent; border-top-color: var(--blue); }
+  @media (max-width: 760px) {
+    .rail { grid-template-columns: 1fr; }
+    .step { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 14px; padding: 11px 14px; border-right: 0; border-top: 1px solid rgb(255 255 255 / 0.35); }
+    .step:first-child { border-top: 0; }
+    .ghost, .step:nth-child(5) { border-top-color: var(--ink); }
+    .step .num { width: 3.2em; }
+    .here { position: static; order: 3; margin-left: auto; color: #fff; }
+    .here::after { display: none; }
+  }
+
+  /* CHIFFRES */
+  .proof { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding-block: 0; }
+  .fig { padding: 32px 28px 36px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+  .fig:first-child { padding-left: 0; }
+  .fig:last-child { border-right: 0; padding-right: 0; }
+  .big { font-weight: 900; font-size: var(--fs-figure); line-height: 1; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+  figcaption { color: var(--mute); font-size: var(--fs-ui); line-height: 1.45; max-width: 30ch; }
+  .fig > div { height: 56px; }
+  .dots { display: grid; grid-template-columns: repeat(25, 1fr); gap: 4px; align-content: end; max-width: 240px; }
+  .dots i { aspect-ratio: 1; background: var(--blue); border-radius: 50%; }
+  .bar { display: flex; align-items: flex-end; }
+  .bar span { display: block; height: 22px; background: var(--blue); }
+  .bar::after { content: ''; flex: 1; height: 22px; background: repeating-linear-gradient(135deg, #fff 0 5px, #c9ced6 5px 6px); }
+  .stack { display: flex; align-items: flex-end; gap: 5px; }
+  .stack span { width: 30px; height: 30px; background: var(--blue); }
+  .before { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
+  .before .was { display: block; height: 22px; padding-left: 8px; font-size: var(--fs-label); font-weight: 600; line-height: 22px; color: var(--mute); background: repeating-linear-gradient(135deg, #fff 0 5px, #c9ced6 5px 6px); }
+  .before .now { display: block; width: 6px; height: 22px; background: var(--blue); }
+  @media (max-width: 1100px) { .proof { grid-template-columns: repeat(2, 1fr); } .fig:nth-child(2) { border-right: 0; } .fig:nth-child(n + 3) { border-top: 1px solid var(--line); } .fig:nth-child(3) { padding-left: 0; } }
+  @media (max-width: 600px) { .proof { grid-template-columns: 1fr; } .fig { padding-inline: 0; border-right: 0; } .fig + .fig { border-top: 1px solid var(--line); } }
+
+  /* LOGOS */
+  .logos { padding-block: 40px 56px; overflow: hidden; }
+  .logos > p { font-size: var(--fs-small); color: var(--mute); margin-bottom: 24px; }
+  .marquee { display: flex; width: max-content; animation: slide 38s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+  .marquee ul { list-style: none; padding: 0 0 0 clamp(56px, 7vw, 112px); display: flex; align-items: center; gap: clamp(56px, 7vw, 112px); }
+  .marquee img { width: auto; filter: brightness(0); opacity: 0.72; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee { animation: none; flex-wrap: wrap; width: auto; } .marquee ul[aria-hidden] { display: none; } }
+
+  /* DOULEURS */
+  .pains h2 { max-width: 16ch; }
+  .pains ul { list-style: none; padding: 0; margin-block: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); }
+  .pains li { font-size: var(--fs-title); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; padding: clamp(24px, 3vw, 40px) clamp(0px, 3vw, 40px) clamp(24px, 3vw, 40px) 0; border-bottom: 1px solid var(--line); text-wrap: balance; }
+  .pains li:nth-child(odd) { border-right: 1px solid var(--line); }
+  .pains li:nth-child(even) { padding-left: clamp(16px, 3vw, 40px); }
+  .pains .lede { max-width: 52ch; }
+  @media (max-width: 700px) { .pains ul { grid-template-columns: 1fr; } .pains li:nth-child(odd) { border-right: 0; } .pains li:nth-child(even) { padding-left: 0; } }
+
+  /* OFFRE */
+  .offer h2, .cases h2, .reviews h2 { max-width: 18ch; margin-bottom: clamp(48px, 6vw, 88px); }
+  .offer-grid { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: clamp(32px, 6vw, 112px); }
+  .side-rail { list-style: none; padding: 0; position: sticky; top: 120px; align-self: start; border: 1px solid var(--ink); }
+  .side-rail li { display: flex; gap: 14px; align-items: baseline; padding: 18px; font-weight: 900; text-transform: uppercase; font-size: var(--fs-body); color: #6b7280; background: repeating-linear-gradient(135deg, #fff 0 9px, var(--ghost) 9px 10px); transition: background 0.6s var(--ease), color 0.6s var(--ease); }
+  .side-rail li + li { border-top: 1px solid var(--ink); }
+  .side-rail span { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.08em; }
+  .side-rail .done, .side-rail .lit { background: var(--blue); color: #fff; }
+  .front { padding-bottom: clamp(48px, 6vw, 80px); margin-bottom: clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); }
+  .front h3 { display: flex; align-items: center; gap: 18px; font-size: var(--fs-title); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; margin-bottom: 20px; }
+  .tag { font-size: var(--fs-small); letter-spacing: 0.08em; border: 1px solid var(--ink); padding: 6px 8px; line-height: 1; transition: background 0.6s var(--ease), color 0.6s var(--ease), border-color 0.6s var(--ease); }
+  .front.lit .tag { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .front .lede { max-width: 44ch; color: var(--ink); }
+  .front ul { margin-top: 28px; padding: 0; list-style: none; max-width: 62ch; }
+  .front li { padding: 12px 0 12px 28px; border-top: 1px solid var(--line); position: relative; }
+  .front li::before { content: ''; position: absolute; left: 2px; top: 1.15em; width: 10px; height: 10px; border: 2px solid var(--blue); transform: rotate(45deg); }
+  .format { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
+  .format div { padding: 20px 22px; }
+  .format div + div { border-left: 1px solid var(--ink); }
+  .format dt { font-size: var(--fs-label); font-weight: 700; color: var(--mute); margin-bottom: 6px; }
+  .format dd { font-weight: 700; line-height: 1.35; }
+  @media (max-width: 900px) {
+    .offer-grid { grid-template-columns: 1fr; }
+    .side-rail { display: none; }
+    .format { grid-template-columns: 1fr; }
+    .format div + div { border-left: 0; border-top: 1px solid var(--ink); }
+  }
+
+  /* ÉTUDES DE CAS */
+  .case { display: grid; grid-template-columns: 1fr 1fr; gap: 32px clamp(32px, 6vw, 112px); padding-block: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+  .case header { grid-column: 1 / -1; }
+  .meta { font-size: var(--fs-ui); font-weight: 700; color: var(--blue); margin-top: 12px; }
+  .case h3 { font-size: var(--fs-title); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; max-width: 24ch; text-wrap: balance; }
+  .case-body p { max-width: 58ch; }
+  .case-body ul { margin-top: 20px; padding-left: 1.1em; max-width: 60ch; }
+  .case-body li { margin-top: 8px; }
+  .case-body li::marker { color: var(--blue); }
+  .results { align-self: start; border-top: 1px solid var(--ink); display: grid; grid-template-columns: auto 1fr; column-gap: 20px; }
+  .results div { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .results dt { font-weight: 900; font-size: var(--fs-title); letter-spacing: -0.035em; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
+  .results dd { color: var(--mute); }
+  @media (max-width: 900px) { .case { grid-template-columns: 1fr; } }
+
+  /* AVIS */
+  .review-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); column-gap: clamp(32px, 6vw, 112px); }
+  .review { padding-block: 28px; border-top: 1px solid var(--line); }
+  .review p { font-size: var(--fs-body); line-height: 1.55; }
+  .review footer { margin-top: 16px; font-size: var(--fs-small); color: var(--mute); line-height: 1.4; }
+  .review footer b { color: var(--ink); }
+  .more { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-weight: 800; font-size: var(--fs-body); color: var(--blue); }
+  .more svg { width: 18px; height: 18px; }
+
+  /* TALKS */
+  .talks h2 { margin-bottom: clamp(32px, 4vw, 56px); }
+  .talks ul { list-style: none; padding: 0; }
+  .talks li { display: grid; grid-template-columns: 200px 1fr auto; gap: 8px 40px; align-items: baseline; padding-block: 28px; border-top: 1px solid var(--line); }
+  .talks li:last-child { border-bottom: 1px solid var(--line); }
+  .talks time { color: var(--mute); font-size: var(--fs-small); }
+  .talks h3 { font-size: var(--fs-step); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+  .talks h3 span { font-weight: 400; color: var(--mute); }
+  .talks h3 .soon { font-size: var(--fs-label); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--blue); padding: 4px 8px; align-self: center; }
+  .talks li p { color: var(--mute); margin-top: 4px; }
+  .talks .links { display: flex; flex-direction: column; gap: 4px; text-align: right; font-weight: 700; }
+  .talks .links a { color: var(--blue); }
+  .invite { margin-top: 32px; color: var(--mute); }
+  .invite a { color: var(--blue); font-weight: 700; }
+  @media (max-width: 760px) { .talks li { grid-template-columns: 1fr; } .talks .links { text-align: left; } }
+
+  /* BLOG */
+  .latest-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 4vw, 56px); }
+  .latest-head a { font-weight: 800; color: var(--blue); }
+  .latest ul { list-style: none; padding: 0; }
+  .latest li { border-top: 1px solid var(--line); }
+  .latest li:last-child { border-bottom: 1px solid var(--line); }
+  .latest li a { display: grid; grid-template-columns: 200px 1fr; gap: 6px 40px; padding-block: 28px; text-decoration: none; }
+  .latest time { color: var(--mute); font-size: var(--fs-small); grid-row: span 2; padding-top: 6px; }
+  .latest h3 { font-size: var(--fs-step); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; transition: color 0.2s; }
+  .latest li a:hover h3 { color: var(--blue); }
+  .latest li p { color: var(--mute); max-width: 70ch; }
+  @media (max-width: 700px) { .latest li a { grid-template-columns: 1fr; } .latest time { grid-row: auto; } }
+
+  /* CTA FINAL */
+  .next {
+    background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.09' stroke-width='2'%3E%3Cpath d='M90 4 176 90 90 176 4 90Z'/%3E%3Cpath d='M90 40 140 90 90 140 40 90Z'/%3E%3C/g%3E%3C/svg%3E");
+    color: #fff;
+  }
+  .next h2 { font-size: var(--fs-headline); max-width: 15ch; }
+  .next .wrap > p { font-size: var(--fs-lede); max-width: 46ch; margin-block: 28px 40px; color: #dfe4fb; }
+  .mini-rail { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #fff; margin-top: clamp(56px, 7vw, 96px); }
+  .mini-rail li { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px 18px; font-weight: 900; text-transform: uppercase; font-size: var(--fs-body); line-height: 1; color: rgb(255 255 255 / 0.78); background: repeating-linear-gradient(135deg, transparent 0 9px, rgb(255 255 255 / 0.1) 9px 10px); }
+  .mini-rail li + li { border-left: 1px solid #fff; }
+  .mini-rail .done { background: none; color: #fff; }
+  .mini-rail .now { background: #fff; color: var(--blue); }
+  .mini-rail span { display: flex; align-items: center; gap: 6px; font-size: var(--fs-label); letter-spacing: 0.08em; font-weight: 700; }
+  .mini-rail svg { width: 14px; height: 14px; }
+  @media (max-width: 600px) { .mini-rail { grid-template-columns: repeat(2, 1fr); } .mini-rail li:nth-child(3) { border-left: 0; } .mini-rail li:nth-child(n + 3) { border-top: 1px solid #fff; } }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; }
+  .me { display: flex; align-items: center; gap: 14px; line-height: 1.3; color: #dfe4fb; font-size: var(--fs-ui); }
+  .me img { border-radius: 50%; border: 2px solid #fff; }
+  .me b { color: #fff; }
+  .btn.light { background: #fff; color: var(--blue); }
+  .btn.light:hover { background: var(--ink); color: #fff; }
+</style>

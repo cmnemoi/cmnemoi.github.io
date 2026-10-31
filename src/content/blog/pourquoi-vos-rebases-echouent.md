@@ -1,7 +1,7 @@
 ---
-title: "Vos rebases échouent ? Le rebase n'y est pas toujours pour quelque chose"
+title: "Vos rebases échouent ? Le rebase n’y est pas toujours pour quelque chose"
 date: 2025-06-06T23:16:41+02:00
-description: "Trois erreurs qui font échouer le rebase d'une branche, dont une que je ne sais toujours pas expliquer, et les quatre commandes que j'utilise."
+description: "Trois erreurs qui font échouer le rebase d’une branche, dont une que je ne sais toujours pas expliquer, et les quatre commandes que j’utilise."
 toc: false
 images:
 tags:

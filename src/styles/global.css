@@ -1,0 +1,85 @@
+@import '@fontsource-variable/archivo';
+
+:root {
+  --ink: #111318;
+  --mute: #4f5563;
+  --blue: #1d3bbf;
+  --line: #e4e7ec;
+  --ghost: #f3f4f6;
+  --paper: #ffffff;
+  --gutter: clamp(16px, 6.6vw, 96px);
+  /* Échelle typographique : toute taille de texte vient d'ici. */
+  --fs-label: 0.8rem;
+  --fs-small: 0.9rem;
+  --fs-ui: 1rem;
+  --fs-body: 1.125rem;
+  --fs-lede: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-step: clamp(1.3rem, 2.2vw, 1.75rem);
+  --fs-title: clamp(1.75rem, 3.2vw, 2.75rem);
+  --fs-figure: clamp(2.6rem, 4.4vw, 4rem);
+  --fs-headline: clamp(2.5rem, 6vw, 5.25rem);
+  --fs-display: clamp(2.5rem, 8.6vw, 7.6rem);
+  --font: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--blue); }
+img, svg { display: block; max-width: 100%; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: #c9ced6; border: 3px solid var(--paper); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+
+.wrap { padding-inline: var(--gutter); max-width: 1632px; margin-inline: auto; }
+
+.display {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+.display em { font-style: normal; color: var(--blue); }
+
+h2.display { font-size: var(--fs-headline); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 0.85em 1.35em;
+  transition: background 0.25s var(--ease);
+}
+.btn:hover { background: var(--ink); color: #fff; }
+.btn svg { width: 1em; height: 1em; transition: transform 0.25s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+
+.lede { font-size: var(--fs-lede); line-height: 1.4; color: var(--mute); max-width: 40ch; }
+.lede b { color: var(--ink); font-weight: 700; }
+
+section { padding-block: clamp(80px, 11vw, 168px); }
+.rule { border-top: 1px solid var(--ink); }

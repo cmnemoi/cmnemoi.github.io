@@ -1,10 +1,6 @@
 [tools]
-hugo-extended = "0.151.0"
+node = "lts"
 
 [tasks.serve]
-description = "Run the Hugo dev server"
-run = "hugo server"
-
-[tasks.new]
-description = "Create a new post: mise run new my-new-post"
-run = "hugo new content content/posts/{{arg(name='slug')}}.md"
+description = "Lancer le serveur de développement"
+run = "npm run dev"
