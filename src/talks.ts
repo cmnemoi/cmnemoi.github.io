@@ -1,6 +1,6 @@
 // Du plus récent au plus ancien. `replay` : vidéo publique ; `url` : page de l'événement.
 export const TALKS = [
-  { event: 'Epitech Summit', date: '2027-02-02', title: 'Archéologie logicielle : reconstruire un jeu sans son code source', },
+  { event: 'Epitech Summit', city: 'Lille', date: '2027-02-02', title: 'Archéologie logicielle : reconstruire un jeu sans son code source', },
   { event: 'Software Craft Lille', city: 'Lille', date: '2027-01-20', title: 'Archéologie logicielle : reconstruire un jeu sans son code source', },
   {
     event: 'Volcamp', city: 'Clermont-Ferrand', date: '2026-10-02',
