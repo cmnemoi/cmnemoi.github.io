@@ -9,9 +9,13 @@ tags:
   - open-source
 ---
 
-Un nouveau collègue clone votre projet, ouvre le README et commence une liste d'instructions à suivre à la main. Chaque étape est une occasion de se tromper, et sa première journée passe à déboguer son environnement plutôt que le code. Nous automatisons pourtant nos tests, nos déploiements et notre intégration continue.
+Quand j'ai rejoint [eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, installer le projet était un vrai frein : PHP, Node.js et PostgreSQL à installer et configurer à la main. Aujourd'hui, ça tient en une commande.
 
-Lorsque j'ai rejoint [eMush](https://gitlab.com/eternaltwin/mush/mush), un jeu en ligne open source que je développe depuis 2022, l'installation était un véritable frein : PHP, Node.js et PostgreSQL à installer et configurer à la main. Elle tient aujourd'hui en une commande. Entre les deux, nous avons essayé Docker, puis une documentation détaillée, et aucun des deux n'a suffi. Ce qui leur manquait montre assez bien où se trouve le vrai coût d'une installation manuelle.
+Entre les deux, on a essayé Docker, puis une documentation détaillée. Aucun des deux n'a suffi. Et ce qui leur manquait montre assez bien où se cache le vrai coût d'une installation manuelle.
+
+Vous connaissez sûrement la scène. Une nouvelle personne rejoint l'équipe, clone le projet, ouvre le README et commence une liste d'instructions à suivre à la main. Chaque étape est une occasion de se tromper, et sa première journée passe à déboguer son environnement plutôt que le code.
+
+On automatise pourtant nos tests, nos déploiements et notre intégration continue. Alors pourquoi pas l'installation ?
 
 ## Tout installer à la main
 
@@ -35,25 +39,27 @@ Pour PostgreSQL :
 - créer deux bases de données, l'une pour le développement, l'autre pour les tests ;
 - configurer les permissions, et adapter si besoin le `pg_hba.conf` pour autoriser les connexions.
 
-Chaque contributeur refaisait ces étapes sur sa machine, avec sa plateforme et ses versions. Les erreurs qui en résultaient étaient subtiles : un écart de configuration, une version de dépendance incompatible. Le temps passait à déboguer l'environnement plutôt que le code, et chaque arrivée était lente et fragile.
+Chaque contributeur refaisait ces étapes sur sa machine, avec sa plateforme et ses versions. Les erreurs étaient subtiles : un écart de configuration, une version de dépendance incompatible.
 
-Chaque étape faite à la main est un endroit où deux machines peuvent diverger. C'est cette divergence que les phases suivantes ont essayé de réduire.
+Résultat : on déboguait l'environnement au lieu du code, et chaque arrivée était lente et fragile.
+
+Le problème, pour moi, est là : chaque étape faite à la main est un endroit où deux machines peuvent diverger. C'est cette divergence que les étapes suivantes ont essayé de réduire.
 
 ## Docker
 
-Pour homogénéiser l'environnement, nous avons introduit Docker. PHP, Node.js et PostgreSQL tournent alors dans les mêmes conteneurs pour tout le monde, et beaucoup de différences entre machines disparaissent.
+Pour homogénéiser l'environnement, on a introduit Docker. PHP, Node.js et PostgreSQL tournent alors dans les mêmes conteneurs pour tout le monde, et beaucoup de différences entre machines disparaissent.
 
-La divergence s'est pourtant déplacée vers l'installation de Docker elle-même, qui n'avait rien de trivial, en particulier sous Windows (WSL2, différences de versions, problèmes de permissions…). Un nouveau contributeur pouvait encore rester bloqué dès les premières commandes.
+Sauf que la divergence s'est déplacée vers l'installation de Docker elle-même. Et elle n'avait rien de trivial, en particulier sous Windows (WSL2, différences de versions, problèmes de permissions…). Un nouveau contributeur pouvait encore rester bloqué dès les premières commandes.
 
 ## Documenter
 
-Nous avons donc renforcé la documentation : prérequis précis, vérifications de l'environnement, astuces propres à chaque plateforme. Le processus est devenu plus fiable.
+On a donc renforcé la documentation : prérequis précis, vérifications de l'environnement, astuces propres à chaque plateforme. Le processus est devenu plus fiable.
 
-Il restait toutefois une checklist relativement longue, faite de commandes successives. La documentation rendait chaque étape plus sûre sans en retirer aucune, et c'était toujours le nouvel arrivant qui les exécutait.
+Mais il restait une checklist assez longue, faite de commandes successives. La documentation rendait chaque étape plus sûre sans en retirer aucune. Et c'était toujours la personne qui arrivait qui les exécutait.
 
 ## Une seule commande
 
-L'étape suivante consistait à confier ces commandes à un script. Sur Ubuntu, l'installation d'eMush tient aujourd'hui en une ligne :
+L'étape suivante : confier ces commandes à un script. Sur Ubuntu, l'installation d'eMush tient aujourd'hui en une ligne :
 
 ```bash
 curl -sSL https://gitlab.com/eternaltwin/mush/mush/-/raw/main/clone_and_docker_install.sh?ref_type=heads | bash
@@ -61,17 +67,21 @@ curl -sSL https://gitlab.com/eternaltwin/mush/mush/-/raw/main/clone_and_docker_i
 
 Ce script vérifie que `git` et `curl` sont présents, clone le dépôt, puis lance `docker_install.sh`. Ce second script installe Docker, prépare les variables d'environnement, construit les images, installe le back-end, le front-end et le serveur d'authentification, puis initialise les bases de données.
 
-La difficulté de la phase Docker a donc disparu : installer Docker n'est plus un prérequis, c'est une étape du script. Un nouvel arrivant dispose d'un environnement fonctionnel en quelques minutes.
+Le blocage de la phase Docker a donc disparu : installer Docker n'est plus un prérequis, c'est une étape du script. Une nouvelle personne a un environnement fonctionnel en quelques minutes.
 
-Cette automatisation n'est pas universelle. Le script fonctionne sur Ubuntu, y compris via WSL2 sous Windows, et un script PowerShell existe pour Windows natif. D'autres distributions restent à couvrir. Même partielle, elle a déjà réduit le temps d'installation, rendu les environnements plus cohérents et simplifié l'aide apportée aux nouveaux contributeurs.
+Ce n'est pas universel pour autant. Le script marche sur Ubuntu, y compris via WSL2 sous Windows, et un script PowerShell existe pour Windows natif. D'autres distributions restent à couvrir.
+
+Même partielle, cette automatisation a déjà réduit le temps d'installation, rendu les environnements plus cohérents et simplifié l'aide apportée aux nouveaux contributeurs.
 
 ## Et sans Docker ?
 
 Docker n'est pas obligatoire. Il a été utile sur eMush parce que plusieurs technologies y cohabitent. Sur une stack homogène, par exemple entièrement en JavaScript, des scripts natifs peuvent suffire.
 
-Je viserais donc, par défaut, une installation en une seule commande : chaque étape laissée au lecteur d'une documentation est une étape où sa machine peut diverger de la vôtre. L'outil dépend de la stack, Docker quand plusieurs technologies cohabitent, un script natif sinon. Et tant que le script ne couvre pas toutes les plateformes, la documentation reste nécessaire pour les autres.
+Par défaut, je viserais donc une installation en une seule commande. L'outil dépend de la stack : Docker quand plusieurs technologies cohabitent, un script natif sinon.
 
-Si vous voulez simplifier l'installation de votre projet, ou échanger sur l'ingénierie logicielle, le ML engineering ou l'IA générative, vous pouvez me contacter sur [LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/).
+Et tant que le script ne couvre pas toutes les plateformes, la documentation reste nécessaire pour les autres.
+
+Si vous voulez simplifier l'installation de votre projet, ou parler d'ingénierie logicielle, de ML engineering ou d'IA générative, écrivez-moi sur [LinkedIn](https://www.linkedin.com/in/madi-mnemoi-charles-meldhine-python/).
 
 ## Références
 
