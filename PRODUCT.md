@@ -12,7 +12,7 @@ Astro, site statique. Articles en Markdown dans le repo, publiés par `git push`
 
 ## Users
 
-CTO et leads tech d'entreprises qui ont déjà un agent ou un produit IA (LLM, RAG, agents) en production, et pour qui ce produit devient difficile à faire évoluer : changements risqués, régressions, livraisons qui ralentissent. Ils arrivent souvent depuis LinkedIn.
+Avatar (validé le 01/11/2026) : Digital Product Manager d'un assistant GenAI déjà en prod dans un grand groupe, profil d'origine technique. Il promet des dates qu'il ne maîtrise pas, avec une équipe qu'il n'a pas choisie, et craint pour son budget. Son critère : « livré ou pas, comme la hiérarchie l'attendait ». Moment critique : les deux dernières semaines du quarter. Son rêve : faire de l'assistant un vrai canal, pas un gadget. Il arrive souvent depuis LinkedIn.
 
 ## Product Purpose
 
@@ -20,7 +20,7 @@ Site personnel freelance de Charles-Meldhine Madi Mnemoi, ingénieur IA en micro
 
 ## Positioning
 
-Charles intervient après les premières mises en production d'un agent ou d'un produit IA. Son rôle : le rendre fiable et maintenable, puis accélérer les livraisons. Il traite un produit IA comme du logiciel : tests, évaluation automatisée, revue de code, inversion de dépendances, TDD (il évite le terme « Clean Architecture », trop clivant). Il a aussi mené une équipe open source (eMush) pendant plus de 3 ans.
+Charles intervient après les premières mises en production d'un agent ou d'un produit IA. Son rôle : aider l'équipe à tenir le quarter. Cadrer (3 amigos, example mapping) pour éviter les surprises de fin de quarter, fiabiliser (tests, évaluation automatisée, CI) pour que les dates tiennent, puis accélérer. Accroche : livrer vite et bien, pas « apporter de la valeur ». La valeur client arrive en bonus. Un freelance qui livre prouve qu'avec les bonnes personnes ça va plus vite : un argument pour son prochain arbitrage budgétaire. Il traite un produit IA comme du logiciel : tests, évaluation automatisée, revue de code, inversion de dépendances, TDD (il évite le terme « Clean Architecture », trop clivant). Il a aussi mené une équipe open source (eMush) pendant plus de 3 ans.
 
 ## Operating Context
 
@@ -42,7 +42,7 @@ Charles intervient après les premières mises en production d'un agent ou d'un 
 ## Brand Commitments
 
 - Nom affiché : « Charles-Meldhine » (en-tête), « Charles-Meldhine Madi Mnemoi » (métadonnées, mentions légales). Titre : « Ingénieur IA ».
-- Hero : « VOTRE AGENT IA EST EN PROD. ET **APRÈS** ? » Sous-titre : « J'interviens après vos premières mises en prod. Je rends votre produit IA fiable et maintenable, puis j'accélère vos livraisons. »
+- Hero : « VOTRE AGENT IA EST EN PROD. TENEZ LE **QUARTER**. » Sous-titre : « Vous avez promis des livraisons à votre hiérarchie. Je renforce l'équipe qui porte votre assistant IA pour que ce qui est promis soit fini, à la date annoncée. »
 - Référence visuelle existante : ses cards LinkedIn (`card_linkedin.png`). Fond blanc, motif de losanges gris clair, grotesque très grasse en majuscules noires, un mot clé en bleu roi, signature avec photo ronde. Degré de reprise non décidé.
 - Structure inspirée de williamalexander.tech.
 
@@ -60,6 +60,9 @@ Charles intervient après les premières mises en production d'un agent ou d'un 
 
 ## Product Principles
 
+- Parler à un PM, pas à un tech lead : résultats, dates, visibilité. La stack reste discrète, mais DORA reste cité.
+- Charles est dev, pas PO/PM : ne jamais promettre de livrable PM (slides, reporting). Cadrer est une proposition : il ne l'a jamais mis en place.
+- Trois points par étape de l'offre. Pas d'acquis de base (ex. retour arrière) présentés comme une promesse.
 - Une IA en production est du logiciel : la preuve passe par des pratiques et des résultats concrets, pas par du jargon IA.
 - Chaque section mène vers l'appel de 30 minutes.
 - Aucune affirmation inventée : chiffres, clients et citations viennent du bilan.

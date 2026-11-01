@@ -15,33 +15,33 @@ const steps = [
   { n: '02', label: 'Build', done: true },
   { n: '03', label: 'Déploiement', done: true },
   { n: '04', label: 'En prod', done: true },
-  { n: '05', label: 'Fiabiliser' },
-  { n: '06', label: 'Maintenir' },
+  { n: '05', label: 'Cadrer' },
+  { n: '06', label: 'Fiabiliser' },
   { n: '07', label: 'Accélérer' },
 ];
 
 const pains = [
-  'On n’ose plus toucher au prompt.',
-  'Chaque correction casse autre chose.',
-  'On ne sait pas si la nouvelle version répond mieux que l’ancienne.',
-  'On livrait vite au début. Plus maintenant.',
+  'Toutes les business units veulent leur fonctionnalité, le plus vite possible.',
+  'J’ai promis une date que je ne maîtrise pas.',
+  'Il faut que ce soit fini avant la fin du quarter.',
+  'Avec ces moyens-là, on ne pourra pas tout livrer.',
 ];
 
 const fronts = [
   {
-    n: '05', title: 'Fiabiliser',
-    text: 'Vous savez si une nouvelle version répond mieux que l’ancienne avant de la livrer, pas après les retours des utilisateurs.',
-    items: ['Tests automatisés sur le code autour du modèle', 'Évaluation automatique des réponses sur des questions de référence écrites avec le métier', 'Une CI qui bloque les régressions à chaque push', 'Logs et traces pour comprendre une mauvaise réponse en prod'],
+    n: '05', title: 'Cadrer',
+    text: 'Je vous propose de relire chaque ticket à trois avant de le commencer : métier, dev et test. Les surprises arrivent alors en début de quarter, pas dans les deux dernières semaines.',
+    items: ['3 amigos : métier, dev et test comprennent le ticket de la même façon avant qu’il démarre', 'Example mapping : des exemples concrets fixent les règles et font sortir les questions tôt', 'Des questions de référence, validées avec le métier, pour juger l’assistant'],
   },
   {
-    n: '06', title: 'Maintenir',
-    text: 'Changer un prompt, un modèle ou un outil ne casse plus le reste du produit.',
-    items: ['Vos règles métier ne dépendent d’aucun modèle ni fournisseur de LLM : en changer devient un détail', 'Prompts versionnés et déployés comme du code : chaque changement est traçable et réversible', 'Refactoring progressif, sans geler les livraisons'],
+    n: '06', title: 'Fiabiliser',
+    text: 'Une livraison ne casse plus ce qui marchait. Vous savez si la nouvelle version répond mieux que l’ancienne avant de la montrer, pas après les retours des utilisateurs.',
+    items: ['Chaque modification est vérifiée automatiquement avant d’arriver en prod', 'Un score de qualité des réponses, mesuré à chaque changement', 'Changer de modèle ou de fournisseur d’IA sans tout réécrire'],
   },
   {
     n: '07', title: 'Accélérer',
-    text: 'Votre équipe livre mieux, plus vite et dans de meilleures conditions. Je m’appuie sur les capacités DORA, issues de plus de dix ans de recherche sur les équipes qui livrent.',
-    items: ['Des petits lots livrés souvent, sur une branche principale toujours déployable', 'Des déploiements automatisés et reproductibles, au rythme que votre organisation choisit', 'Des retours rapides : les tests et la CI répondent en quelques minutes, pas en une heure'],
+    text: 'Plus de fonctionnalités finies, à la date annoncée. Je m’appuie sur les capacités DORA, issues de plus de dix ans de recherche sur les équipes qui livrent. Une équipe renforcée qui livre plus, c’est aussi votre argument pour le prochain arbitrage budgétaire.',
+    items: ['Des livraisons petites et fréquentes, plutôt qu’un gros lot risqué en fin de quarter', 'Des mises en prod automatiques, au rythme que votre organisation choisit', 'Des retours rapides : l’équipe sait en quelques minutes si une modification casse quelque chose'],
   },
 ];
 
@@ -62,14 +62,14 @@ const reviews = [
   { who: 'Anthony Cyrille', role: 'CTO et formateur, eSWIT', text: 'Son approche est structurée, pragmatique et orientée qualité. Il pose de bonnes questions, challenge les choix techniques avec bienveillance et pédagogie.' },
 ];
 ---
-<Base title="Accueil" description="Ingénieur IA freelance. Votre agent IA est en prod, et après ? J’interviens après vos premières mises en prod : je rends votre produit IA fiable et maintenable, puis j’accélère vos livraisons.">
+<Base title="Accueil" description="Ingénieur IA freelance. Votre agent IA est en prod : tenez le quarter. Je renforce l’équipe qui porte votre assistant IA pour que ce qui est promis soit fini, à la date annoncée.">
 
   <!-- HERO -->
   <section class="hero wrap">
     <p class="badge"><i></i>En mission · Prochaines disponibilités à discuter</p>
-    <h1 class="display">Votre agent IA <br class="lg" />est en prod.<br />Et <em>après</em>&nbsp;?</h1>
+    <h1 class="display">Votre agent IA <br class="lg" />est en prod.<br />Tenez le <em>quarter</em>.</h1>
     <div class="hero-row">
-      <p class="lede">J’interviens après vos premières mises en prod. Je rends votre produit IA <b>fiable et maintenable</b>, puis j’accélère vos livraisons.</p>
+      <p class="lede">Vous avez promis des livraisons à votre hiérarchie. Je renforce l’équipe qui porte votre assistant IA pour que ce qui est promis soit <b>fini, à la date annoncée</b>.</p>
       <a class="btn big" href={CALENDLY}>Réserver un appel de 30&nbsp;min <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" /></svg></a>
     </div>
     <ol class="rail" aria-label="Le cycle de vie d’un produit IA">
@@ -93,7 +93,7 @@ const reviews = [
     <figure class="fig">
       <div class="bar" aria-hidden="true"><span style="width:80%"></span></div>
       <p class="big">80&nbsp;%</p>
-      <figcaption>de bonnes réponses, mesurées par une évaluation automatique lancée à chaque push.</figcaption>
+      <figcaption>de bonnes réponses, mesurées automatiquement à chaque modification.</figcaption>
     </figure>
     <figure class="fig">
       <div class="stack" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
@@ -125,12 +125,12 @@ const reviews = [
     <ul>
       {pains.map((p) => <li>« {p} »</li>)}
     </ul>
-    <p class="lede">Elles arrivent quand un produit IA grandit plus vite que le code qui le porte. <b>Ce n’est pas une fatalité, c’est du travail d’ingénierie.</b></p>
+    <p class="lede">Les demandes et le budget ne dépendent pas toujours de vous. La vitesse à laquelle votre équipe livre, si. <b>Et ça, c’est du travail d’ingénierie.</b></p>
   </section>
 
   <!-- OFFRE -->
   <section id="offre" class="offer wrap rule">
-    <h2 class="display">Trois étapes après la <em>mise en prod</em>.</h2>
+    <h2 class="display">Trois leviers pour <em>tenir</em> vos dates.</h2>
     <div class="offer-grid">
       <ol class="side-rail" aria-hidden="true">
         <li class="done"><span>04</span>En prod</li>
@@ -165,11 +165,11 @@ const reviews = [
       <div class="case-body">
         <p>Un assistant interne qui répond aux questions des équipes à partir de la documentation de l’entreprise. Au départ, un prototype Streamlit. Il fallait le rendre solide pour trois filiales.</p>
         <ul>
-          <li>Migration du prototype vers une API FastAPI déployée sur Cloud Run</li>
-          <li>Pipelines d’indexation avec Cloud Run Jobs et Workflows</li>
-          <li>Évaluation automatique : un LLM note les réponses sur des questions de référence écrites avec le métier, à chaque push dans GitLab CI</li>
-          <li>Prompt engineering et découpage des documents, guidés par cette évaluation</li>
-          <li>Tests pytest, monitoring Grafana, application Teams</li>
+          <li>Passage d’un prototype à un service solide, utilisé par trois filiales</li>
+          <li>Documentation de l’entreprise remise à jour automatiquement dans l’assistant</li>
+          <li>Qualité des réponses mesurée à chaque modification, sur des questions écrites avec le métier</li>
+          <li>Améliorations guidées par ce score, pas par l’intuition</li>
+          <li>Assistant disponible dans Teams, suivi en continu</li>
         </ul>
       </div>
       <dl class="results">
@@ -187,17 +187,17 @@ const reviews = [
       <div class="case-body">
         <p>Un assistant IA utilisé par des professionnels du droit français. Le produit était déjà en production : il fallait le faire évoluer sans casser l’existant.</p>
         <ul>
-          <li>Fonctionnalités Python du moteur d’orchestration d’agents</li>
-          <li>Routage dynamique de chaque question vers la recherche web ou le RAG agentique</li>
-          <li>Support de plusieurs documents dans les workflows à prompts prédéfinis</li>
+          <li>Nouvelles fonctionnalités livrées sur un produit déjà utilisé par des clients</li>
+          <li>Chaque question part automatiquement vers la bonne source : recherche web ou base documentaire</li>
+          <li>Plusieurs documents analysés dans une même demande</li>
           <li>Intégration de Mistral de A à Z : un modèle européen, pour un assistant souverain</li>
-          <li>Streaming des réponses du chatbot</li>
+          <li>Réponses affichées au fil de l’eau, sans attente</li>
         </ul>
       </div>
       <dl class="results">
         <div><dt>Agents</dt><dd>orchestration et routage entre outils</dd></div>
         <div><dt>Mistral</dt><dd>intégré de A à Z, pour la souveraineté des données</dd></div>
-        <div><dt>Streaming</dt><dd>des réponses, côté API et interface</dd></div>
+        <div><dt>Streaming</dt><dd>des réponses affichées au fil de l’eau</dd></div>
       </dl>
     </article>
   </section>
@@ -262,16 +262,16 @@ const reviews = [
   <!-- CTA FINAL -->
   <section class="next">
     <div class="wrap">
-      <h2 class="display">L’étape 05 commence par un appel de 30&nbsp;minutes.</h2>
-      <p>Vous me racontez où en est votre produit IA. Je vous dis honnêtement si je peux vous aider, et comment.</p>
+      <h2 class="display">Le prochain quarter commence par un appel de 30&nbsp;minutes.</h2>
+      <p>Vous me racontez ce qui est promis pour ce quarter et où en est l’équipe. Je vous dis honnêtement si je peux vous aider, et comment.</p>
       <div class="cta-row">
         <a class="btn big light" href={CALENDLY}>Réserver un appel <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 10h13M11 4.5 16.5 10 11 15.5" /></svg></a>
         <p class="me"><img src="/photo.jpg" alt="" width="56" height="56" loading="lazy" /><span><b>Charles-Meldhine</b><br />Ingénieur IA</span></p>
       </div>
       <ol class="mini-rail" aria-hidden="true">
         <li class="done"><span>04 <svg viewBox="0 0 16 16"><path d="m3 8.5 3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" /></svg></span>En prod</li>
-        <li class="now"><span>05</span>Fiabiliser</li>
-        <li><span>06</span>Maintenir</li>
+        <li class="now"><span>05</span>Cadrer</li>
+        <li><span>06</span>Fiabiliser</li>
         <li><span>07</span>Accélérer</li>
       </ol>
     </div>
