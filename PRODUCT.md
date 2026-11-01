@@ -42,7 +42,7 @@ Charles intervient après les premières mises en production d'un agent ou d'un 
 ## Brand Commitments
 
 - Nom affiché : « Charles-Meldhine » (en-tête), « Charles-Meldhine Madi Mnemoi » (métadonnées, mentions légales). Titre : « Ingénieur IA ».
-- Hero : « VOTRE AGENT IA EST EN PROD. TENEZ LE **QUARTER**. » Sous-titre : « Vous avez promis des livraisons à votre hiérarchie. Je renforce l'équipe qui porte votre assistant IA pour que ce qui est promis soit fini, à la date annoncée. »
+- Hero : « VOTRE AGENT IA EST EN PROD. LIVREZ **PLUS VITE**, SANS CASSER CE QUI MARCHE. » Sous-titre : « Je renforce l'équipe qui porte votre assistant IA : des livraisons plus fréquentes, et plus de mauvaises surprises en fin de quarter. »
 - Référence visuelle existante : ses cards LinkedIn (`card_linkedin.png`). Fond blanc, motif de losanges gris clair, grotesque très grasse en majuscules noires, un mot clé en bleu roi, signature avec photo ronde. Degré de reprise non décidé.
 - Structure inspirée de williamalexander.tech.
 

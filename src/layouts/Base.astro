@@ -7,7 +7,7 @@ const { title, description } = Astro.props;
 const fullTitle = title === 'Accueil'
   ? 'Charles-Meldhine Madi Mnemoi · Ingénieur IA freelance'
   : `${title} · Charles-Meldhine`;
-const ogImage = new URL('/og.png', Astro.site);
+const ogImage = new URL('/og.png?v=2', Astro.site);
 ---
 <!doctype html>
 <html lang="fr">
