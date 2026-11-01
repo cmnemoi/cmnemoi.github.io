@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://cmnemoi.github.io',
+  site: 'https://cmnemoi.com',
   markdown: { shikiConfig: { theme: 'github-light' } },
   // Anciennes URL du site Hugo
   redirects: {
