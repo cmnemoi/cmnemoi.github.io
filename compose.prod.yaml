@@ -10,7 +10,7 @@ services:
   site:
     image: ghcr.io/cmnemoi/site:${IMAGE_TAG:-main}
     container_name: site
-    ports: ["127.0.0.1:8180:80"]
+    expose: ["80"]
     restart: unless-stopped
     stop_grace_period: 10s
     healthcheck:
