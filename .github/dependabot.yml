@@ -1,0 +1,10 @@
+# Mises à jour hebdomadaires des images de base, regroupées en une seule PR.
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      docker:
+        patterns: ["*"]

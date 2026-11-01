@@ -1,0 +1,30 @@
+name: site
+
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  site:
+    image: ghcr.io/cmnemoi/cmnemoi.github.io:${IMAGE_TAG:-main}
+    container_name: site
+    ports: ["127.0.0.1:8180:80"]
+    restart: unless-stopped
+    stop_grace_period: 10s
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --spider http://127.0.0.1/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+          pids: 100
+    logging: *default-logging
+    security_opt:
+      - no-new-privileges:true
