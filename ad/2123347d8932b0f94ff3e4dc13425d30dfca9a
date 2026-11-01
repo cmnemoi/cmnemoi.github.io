@@ -1,0 +1,23 @@
+src/pages/index.astro
+  s_0d45ee57a4187e::t_d722543febe5d9 44,65,70,72
+PRODUCT.md
+  s_0d45ee57a4187e::t_d722543febe5d9 45
+src/layouts/Base.astro
+  s_0d45ee57a4187e::t_7f9a57bad81640 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ad2123347d8932b0f94ff3e4dc13425d30dfca9a",
+  "prompts": {},
+  "sessions": {
+    "s_0d45ee57a4187e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e998057f-2c41-4593-81a8-1b50778e0027",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  }
+}
