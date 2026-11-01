@@ -1,0 +1,25 @@
+PRODUCT.md
+  s_0d45ee57a4187e::t_3ad96f807bfc6d 45,63-65
+  s_0d45ee57a4187e::t_ccd28980b7d01b 23
+  s_0d45ee57a4187e::t_31e17638268441 15
+src/pages/index.astro
+  s_0d45ee57a4187e::t_ccd28980b7d01b 96,168-172,190-192,194,200
+  s_0d45ee57a4187e::t_31e17638268441 18-19,32,37-38,70,133,265-266,273-274
+  s_0d45ee57a4187e::t_3ad96f807bfc6d 24-27,33-34,39,43-44,65,72,128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4fb82f5d50299b2bc8bd9b8db6b39cd225edc0e4",
+  "prompts": {},
+  "sessions": {
+    "s_0d45ee57a4187e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e998057f-2c41-4593-81a8-1b50778e0027",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  }
+}
