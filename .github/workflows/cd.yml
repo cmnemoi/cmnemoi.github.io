@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: cmnemoi/cmnemoi.github.io
+  IMAGE_NAME: cmnemoi/site
 
 # Un déploiement à la fois : deux `docker compose up` simultanés se gênent en recréant les conteneurs.
 concurrency:

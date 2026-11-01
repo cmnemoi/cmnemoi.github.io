@@ -8,7 +8,7 @@ x-logging: &default-logging
 
 services:
   site:
-    image: ghcr.io/cmnemoi/cmnemoi.github.io:${IMAGE_TAG:-main}
+    image: ghcr.io/cmnemoi/site:${IMAGE_TAG:-main}
     container_name: site
     ports: ["127.0.0.1:8180:80"]
     restart: unless-stopped
