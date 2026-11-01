@@ -62,7 +62,7 @@ Charles intervient après les premières mises en production d'un agent ou d'un 
 
 - Parler à un PM, pas à un tech lead : résultats, dates, visibilité. La stack reste discrète, mais DORA reste cité.
 - Charles est dev, pas PO/PM : ne jamais promettre de livrable PM (slides, reporting). Cadrer est une proposition : il ne l'a jamais mis en place.
-- Trois points par étape de l'offre. Pas d'acquis de base (ex. retour arrière) présentés comme une promesse.
+- Trois points par étape de l'offre. Pas d'acquis de base (retour arrière, petites livraisons : tout le monde fait du Scrum) présentés comme une promesse. Ce qui manque vraiment : une vraie CI/CD, et un Scrum appliqué jusqu'au bout.
 - Une IA en production est du logiciel : la preuve passe par des pratiques et des résultats concrets, pas par du jargon IA.
 - Chaque section mène vers l'appel de 30 minutes.
 - Aucune affirmation inventée : chiffres, clients et citations viennent du bilan.
